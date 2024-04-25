@@ -17,7 +17,6 @@ namespace CafeMan_Project
 
             builder.Services.AddScoped<IRepository<Cafe>,CafeRepo>();
             builder.Services.AddScoped<IRepository<User>, UserRepo>();
-            builder.Services.AddScoped<IRepository<Menu>, MenuRepo>();
             builder.Services.AddScoped<IRepository<Edibles>, EdibleRepo>();
             builder.Services.AddScoped<IRepository<Comment>, CommentRepo>();
 

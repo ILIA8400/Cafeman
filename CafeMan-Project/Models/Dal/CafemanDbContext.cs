@@ -10,7 +10,6 @@ namespace CafeMan_Project.Models.Dal
     {
 
         public DbSet<Cafe> Cafes { get; set; }
-        public DbSet<Menu> Menus { get; set; }
         public DbSet<User> Users { get; set; }
         public DbSet<Comment> Comments { get; set; }
         public DbSet<Edibles> Edibles { get; set; }

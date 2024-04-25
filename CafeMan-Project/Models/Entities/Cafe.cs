@@ -19,7 +19,6 @@
         public int UserId { get; set; }
         public ICollection<Comment> Comments { get; set; }
         public ICollection<Edibles> Edibles { get; set; }
-        public Menu Menu { get; set; }
         public bool IsDeleted { get; set; } = false;
     }
 }

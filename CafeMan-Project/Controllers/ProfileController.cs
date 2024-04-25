@@ -30,7 +30,7 @@ namespace CafeMan_Project.Controllers
             {
                 Cafe = cafes,
                 Comments = comments.Where(c => c.CafeId == CafeId).ToList(),
-                Edibles = edibles.Where(c => c.MenuId == 10).ToList()  //Problom =========> menu
+                Edibles = edibles.ToList()  //Problom =========> menu
             };
             
             if(profileViewModel.Cafe == null)
