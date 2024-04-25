@@ -1,0 +1,217 @@
+﻿@using CafeMan_Project.Models.ViewModels
+
+@section style{
+    <link rel="stylesheet" href="~/Assets/css/prostyle.css">
+    <link rel="stylesheet" href="~/Assets/css/commentstyl.css">
+}
+
+@model ProfileViewModel
+
+<header>
+    <p>CafeMan</p>
+    <nav>
+        <div>
+            <a href="ranking.html">رنکینگ</a>
+            <a href="">کافه من</a>
+            <a href="favourite.html">علاقه مندی ها</a>
+        </div>
+        <div class="search-nav">
+            <img width="15" height="15" src="https://img.icons8.com/ios-filled/15/search--v1.png" alt="search--v1" />
+            <input type="text" placeholder="کافه مورد نظرتو پیدا کن">
+            <button href=""><div></div><div></div></button>
+        </div>
+        <div>
+            <a href="signin.html">ورود</a>
+            <a href="signup.html">ثبت نام</a>
+        </div>
+    </nav>
+</header>
+
+
+<main>
+    <div class="Introduction">
+        <p class="name">@Model.Cafe.CafeName</p>
+        <div class="row1">
+            <samp dir="rtl"><img width="20" height="20" src="https://img.icons8.com/color/48/star--v1.png" alt="star--v1" /><img width="20" height="20" src="https://img.icons8.com/color/48/star-half-empty.png" alt="star-half-empty" /><img width="20" height="20" src="https://img.icons8.com/fluency/48/star--v1.png" alt="star--v1" /><img width="20" height="20" src="https://img.icons8.com/fluency/48/star--v1.png" alt="star--v1" /><img width="20" height="20" src="https://img.icons8.com/fluency/48/star--v1.png" alt="star--v1" /><img width="20" height="20" src="https://img.icons8.com/fluency/48/star--v1.png" alt="star--v1" /></samp>
+            <p class="rank">رتبه <samp style="font-weight: bold;">204# </samp>از 1023 کافه</p>
+            <p class="price">قیمت : @Model.Cafe.PriceRange تومان</p>
+        </div>
+        <div class="row2">
+            <a class="adrs"><img width="15" height="15" src="https://img.icons8.com/ios/50/marker--v1.png" alt="marker--v1" /><p>@Model.Cafe.Address</p></a>
+            <a class="phone"><img width="15" height="15" src="https://img.icons8.com/ios/50/phone--v1.png" alt="phone--v1" /><p>@Model.Cafe.Tel</p></a>
+            <a class="site"><img width="15" height="15" src="https://img.icons8.com/material-outlined/24/laptop.png" alt="laptop" /><p>وب سایت</p></a>
+            <a href="" class="menu"><img width="15" height="15" src="https://img.icons8.com/ios/50/restaurant-menu.png" alt="restaurant-menu" /><p>منو</p></a>
+            <a href="" class="info"><img width="15" height="15" src="https://img.icons8.com/ios/50/clock--v3.png" alt="clock--v3" /><p>باز است ، @Model.Cafe.OpeningTime صبح تا @Model.Cafe.ClosingTime شب</p><img width="15" height="15" src="https://img.icons8.com/ios/50/info--v1.png" alt="info--v1" /></a>
+        </div>
+
+    </div>
+    <div class="sub">
+        <div class="images-cafe">
+            <div class="i1"><a href="">دیدن همه <samp>(157)</samp></a></div>
+            <div class="i2"></div>
+            <div class="i3"></div>
+            <div class="i4"></div>
+            <div class="i5"></div>
+        </div>
+        <div class="information">
+            <div class="card1">
+                <p class="titr">موقیعت و ارتباطات</p>
+                <br>
+                <div class="map"><iframe width="100%" height="180" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?width=100%25&amp;height=300&amp;hl=en&amp;q=Tehran+(CafeMan)&amp;t=&amp;z=16&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"><a href="https://www.gps.ie/">gps trackers</a></iframe></div>
+                <samp class="loc"><p>@Model.Cafe.Address</p><img width="15" height="15" src="https://img.icons8.com/ios/50/marker--v1.png" alt="marker--v1" /></samp>
+                <a class="website"><p>وب سایت</p><img width="15" height="15" src="https://img.icons8.com/material-outlined/24/laptop.png" alt="laptop" /></a>
+                <a class="tel"><p>@Model.Cafe.Tel</p><img width="15" height="15" src="https://img.icons8.com/ios/50/phone--v1.png" alt="phone--v1" /></a>
+            </div>
+
+            <div class="card2">
+                <p class="details">جزئیات</p>
+                <br>
+                <samp class="range">
+                    <p>رنج قیمت</p>
+                    <p dir="rtl">@Model.Cafe.PriceRange</p>
+                </samp>
+                <samp class="spe">
+                    <p>جزئیات خاص</p>
+                    <p>@Model.Cafe.Details</p>
+                </samp>
+                <a class="all">
+                    <p>نمایش تمام جزئیات</p>
+                </a>
+            </div>
+
+            <div class="card3">
+                <p class="rating">نمرات و برسی ها</p>
+                <br>
+                <samp class="rate"><img width="20" height="20" src="https://img.icons8.com/color/48/star--v1.png" alt="star--v1" /><img width="20" height="20" src="https://img.icons8.com/color/48/star-half-empty.png" alt="star-half-empty" /><img width="20" height="20" src="https://img.icons8.com/fluency/48/star--v1.png" alt="star--v1" /><img width="20" height="20" src="https://img.icons8.com/fluency/48/star--v1.png" alt="star--v1" /><img width="20" height="20" src="https://img.icons8.com/fluency/48/star--v1.png" alt="star--v1" /><img width="20" height="20" src="https://img.icons8.com/fluency/48/star--v1.png" alt="star--v1" /><p>@Model.Cafe.Star</p></samp>
+                <p class="rank">رتبه <samp style="font-weight: bold;">204# </samp>از 1023 کافه</p>
+                <br>
+                <hr style="border-color: rgb(168, 168, 168); width: 80%;">
+                <br>
+                <p class="r">نمرات</p>
+                <div class="box">
+                    <samp class="food">
+                        <samp dir="rtl"><img width="20" height="20" src="https://img.icons8.com/color/48/star--v1.png" alt="star--v1" /><img width="20" height="20" src="https://img.icons8.com/color/48/star-half-empty.png" alt="star-half-empty" /><img width="20" height="20" src="https://img.icons8.com/fluency/48/star--v1.png" alt="star--v1" /><img width="20" height="20" src="https://img.icons8.com/fluency/48/star--v1.png" alt="star--v1" /><img width="20" height="20" src="https://img.icons8.com/fluency/48/star--v1.png" alt="star--v1" /><img width="20" height="20" src="https://img.icons8.com/fluency/48/star--v1.png" alt="star--v1" /></samp>
+                        <samp><p>غذا</p><img width="15" height="15" src="https://img.icons8.com/ios/50/cutlery.png" alt="cutlery" /></samp>
+                    </samp>
+                    <samp class="service">
+                        <samp dir="rtl"><img width="20" height="20" src="https://img.icons8.com/color/48/star--v1.png" alt="star--v1" /><img width="20" height="20" src="https://img.icons8.com/color/48/star-half-empty.png" alt="star-half-empty" /><img width="20" height="20" src="https://img.icons8.com/fluency/48/star--v1.png" alt="star--v1" /><img width="20" height="20" src="https://img.icons8.com/fluency/48/star--v1.png" alt="star--v1" /><img width="20" height="20" src="https://img.icons8.com/fluency/48/star--v1.png" alt="star--v1" /><img width="20" height="20" src="https://img.icons8.com/fluency/48/star--v1.png" alt="star--v1" /></samp>
+                        <p>سرویس</p><img width="15" height="15" src="https://img.icons8.com/sf-black-filled/64/service-bell.png" alt="service-bell" />
+                    </samp>
+                    <samp class="value">
+                        <samp dir="rtl"><img width="20" height="20" src="https://img.icons8.com/color/48/star--v1.png" alt="star--v1" /><img width="20" height="20" src="https://img.icons8.com/color/48/star-half-empty.png" alt="star-half-empty" /><img width="20" height="20" src="https://img.icons8.com/fluency/48/star--v1.png" alt="star--v1" /><img width="20" height="20" src="https://img.icons8.com/fluency/48/star--v1.png" alt="star--v1" /><img width="20" height="20" src="https://img.icons8.com/fluency/48/star--v1.png" alt="star--v1" /><img width="20" height="20" src="https://img.icons8.com/fluency/48/star--v1.png" alt="star--v1" /></samp>
+                        <p>قیمت</p><img width="15" height="15" src="https://img.icons8.com/sf-black-filled/64/purchase-order.png" alt="purchase-order" />
+                    </samp>
+                </div>
+            </div>
+        </div>
+
+        <div class="menubox">
+            <div class="menu-title"><p>منو</p></div>
+
+            <hr style="border-color: rgb(135, 135, 135); width: 100%;">
+
+            <div class="menu-meals">
+                @foreach(var item in Model.Edibles)
+                {
+                    <div class="meal meal1">
+                        <p class="name-meal">@item.Name</p>
+                        <p class="price-meal">@item.Price ت</p>
+                        <p class="des-meal">@item.Description</p>
+                    </div>
+                }
+            </div>
+            
+
+            <hr style="border-color: rgb(135, 135, 135); width: 100%;">
+
+            <div class="show-full">
+                <a href="">نمایش بیشتر</a>
+            </div>
+        </div>
+
+        <div class="contribute">
+            <a href="">نظر و برسی کردن</a>
+            <a href="">اپلود عکس</a>
+            <a href="">پرسش سوال</a>
+        </div>
+
+        <div class="reviws">
+
+            <div class="commentbox">
+                
+                @foreach(var item in Model.Comments)
+                {
+                    <div class="box">
+                        <div class="name">
+                            <picture class="prof"></picture>
+                            <div class="name-box">
+                                <div><p class="byname">@item.CommentByName</p><samp class="star-comment"><img width="20" height="20" src="https://img.icons8.com/color/48/star--v1.png" alt="star--v1" /><img width="20" height="20" src="https://img.icons8.com/color/48/star-half-empty.png" alt="star-half-empty" /><img width="20" height="20" src="https://img.icons8.com/fluency/48/star--v1.png" alt="star--v1" /><img width="20" height="20" src="https://img.icons8.com/fluency/48/star--v1.png" alt="star--v1" /><img width="20" height="20" src="https://img.icons8.com/fluency/48/star--v1.png" alt="star--v1" /><img width="20" height="20" src="https://img.icons8.com/fluency/48/star--v1.png" alt="star--v1" /></samp></div>
+                                <div>
+                                    <p>8 مشارکت</p>
+                                    <hr style="border-color: black; width: 2px; height: 2px; border-radius: 50%;">
+                                    <p>@item.Date.DayOfYear</p>
+                                </div>
+                            </div>
+                            <div class="like">
+                                <a href="" class="like-number"><p>@item.Likes</p><img width="15" height="15" src="https://img.icons8.com/ios/50/facebook-like--v1.png" alt="facebook-like--v1" /></a>
+                                <a href="" class="options"><img width="15" height="15" src="https://img.icons8.com/ios-filled/50/ellipsis.png" alt="ellipsis" /></a>
+                            </div>
+                        </div>
+                        <div class="commentdes">
+                            <p dir="rtl">@item.CommentText</p>
+                        </div>
+                        <hr style="border-color: rgb(165, 165, 165); width: 90%;">
+                    </div>
+                }
+
+            </div>
+
+            <div class="ratebox">
+                <p>نظرات</p>
+                <div class="rate">
+                    <samp class="star"><img width="20" height="20" src="https://img.icons8.com/color/48/star--v1.png" alt="star--v1" /><img width="20" height="20" src="https://img.icons8.com/color/48/star-half-empty.png" alt="star-half-empty" /><img width="20" height="20" src="https://img.icons8.com/fluency/48/star--v1.png" alt="star--v1" /><img width="20" height="20" src="https://img.icons8.com/fluency/48/star--v1.png" alt="star--v1" /><img width="20" height="20" src="https://img.icons8.com/fluency/48/star--v1.png" alt="star--v1" /><img width="20" height="20" src="https://img.icons8.com/fluency/48/star--v1.png" alt="star--v1" /><p>4.5</p></samp>
+                    <div class="qlty">
+                        <samp><p>عالی</p> <div class="boxx"> <div class="count"><div class="sub-count sub-count1"></div></div> <p class="numb">20</p></div></samp>
+                        <samp><p>خوب</p> <div class="boxx"> <div class="count"><div class="sub-count sub-count2"></div></div> <p class="numb">34</p></div></samp>
+                        <samp><p>متوسط</p> <div class="boxx"> <div class="count"><div class="sub-count sub-count3"></div></div> <p class="numb">99</p></div></samp>
+                        <samp><p>بد</p> <div class="boxx"> <div class="count"><div class="sub-count sub-count4"></div></div> <p class="numb">50</p></div></samp>
+                    </div>
+
+                </div>
+            </div>
+
+
+        </div>
+
+    </div>
+
+</main>
+
+
+<footer>
+    <div class="name">
+        <p dir="rtl">CafeMan</p>
+        <div>
+            <div dir="rtl">تلفن : 02133858511</div>
+            <div>از ساعت 8 صبح تا 12 شب پاسخگوی شما هستیم</div>
+        </div>
+        <a href="" onclick="topFunction()" id="myBtn" title="Go to top">بازگشت به بالا</a>
+    </div>
+    <div class="row2">
+        <div class="conect-us">
+            <div class="social"><a href=""><img width="40" height="40" src="https://img.icons8.com/ios/50/instagram-new--v1.png" alt="instagram-new--v1" /></a><a href=""><img width="40" height="40" src="https://img.icons8.com/ios/40/telegram.png" alt="telegram" /></a><a href=""><img width="50" height="50" src="https://img.icons8.com/ios/50/linkedin.png" alt="linkedin" /></a></div>
+            <p>با ثبت ایمیل از جدید ترین کافه ها و رویداد های کافه ها با خبر شوید</p>
+            <div class="email"><a href="">ثبت</a><input type="email" name="" id="" placeholder="ایمیل شما"></div>
+        </div>
+        <div class="symbols">
+            <a href=""><img src="~/Assets/Images/namad1.webp" alt=""></a>
+            <a href=""><img src="~/Assets/Images/namad2.png" alt=""></a>
+        </div>
+    </div>
+</footer>
+
+
+
+@section script{
+   <script src="~/Assets/js/search-click.js"></script>
+}

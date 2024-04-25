@@ -1,0 +1,149 @@
+﻿@using CafeMan_Project.Models.Entities
+
+@model List<Cafe>
+
+@section style
+{
+    <link rel="stylesheet" href="~/Assets/css/styleindex.css">
+}
+
+@section script {
+    <script src="~/Assets/js/ScrollBackToTop.js"></script>
+    <script src="~/Assets/js/search-click.js"></script>
+}
+
+
+<header>
+    <p>CafeMan</p>
+    <nav>
+        <div>
+            <a href="@Url.Action("Ranking","Ranking")">رنکینگ</a>
+            <a href="">کافه من</a>
+            <a href="@Url.Action("Favourite","Favourite")">علاقه مندی ها</a>
+        </div>
+        <div class="search-nav">
+            <img width="15" height="15" src="https://img.icons8.com/ios-filled/15/search--v1.png" alt="search--v1" />
+            <input type="text" placeholder="کافه مورد نظرتو پیدا کن">
+            <button href=""><div></div><div></div></button>
+        </div>
+        <div>
+            <a href="signin.html">ورود</a>
+            <a href="signup.html">ثبت نام</a>
+        </div>
+    </nav>
+</header>
+
+
+<main>
+
+    <div class="hero">
+        <div class="hero-image">
+            <img src="~/Assets/Images/Hero/download.png" alt="" style="width: 300px; height: 300px;">
+            <img src="~/Assets/Images/Hero/crazy-cup-coffee-cartoon-vector-illustration-43151393.webp" alt="" style="width: 200px; height: 200px;">
+        </div>
+        <div class="hero-title">
+            <p>بهترین و سریع ترین انتخاب</p>
+            <p>در سایت ما میتوانید رنکینگ کافه های تهران و با فیلتر گذاری دلخواه مشاهده کنید یا جا رزرو کنید </p>
+            <div class="hero-input">
+                <a href="">رنکینگ</a>
+                <input type="search" placeholder="سرچ کن و کافه خودتو  پیدا کن">
+            </div>
+        </div>
+    </div>
+
+    <div class="special-cafes">
+        <div class="arrow"><img width="40" height="40" src="https://img.icons8.com/ios/50/FFFFFF/left--v1.png" alt="left--v1" /></div>
+        <div class="cafes">
+            <div>
+                <div class="image-cafe1"></div>
+                <div><a>کافه مارا</a><samp dir="rtl"><img width="20" height="20" src="https://img.icons8.com/color/48/star--v1.png" alt="star--v1" /><img width="20" height="20" src="https://img.icons8.com/color/48/star-half-empty.png" alt="star-half-empty" /><img width="20" height="20" src="https://img.icons8.com/fluency/48/star--v1.png" alt="star--v1" /><img width="20" height="20" src="https://img.icons8.com/fluency/48/star--v1.png" alt="star--v1" /><img width="20" height="20" src="https://img.icons8.com/fluency/48/star--v1.png" alt="star--v1" /></samp></div>
+                <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است چاپگرها و متون بلکه روزنامه و مجله ی مورد نیاز</p>
+            </div>
+            <div>
+                <div class="image-cafe2"></div>
+                <div><a>کافه یعغوب</a><samp dir="rtl"><img width="20" height="20" src="https://img.icons8.com/color/48/star--v1.png" alt="star--v1" /><img width="20" height="20" src="https://img.icons8.com/color/48/star-half-empty.png" alt="star-half-empty" /><img width="20" height="20" src="https://img.icons8.com/fluency/48/star--v1.png" alt="star--v1" /><img width="20" height="20" src="https://img.icons8.com/fluency/48/star--v1.png" alt="star--v1" /><img width="20" height="20" src="https://img.icons8.com/fluency/48/star--v1.png" alt="star--v1" /></samp></div>
+                <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است چاپگرها و متون بلکه روزنامه و مجله ی مورد نیاز</p>
+            </div>
+            <div>
+                <div class="image-cafe3"></div>
+                <div><a>کافه سنتر</a><samp dir="rtl"><img width="20" height="20" src="https://img.icons8.com/color/48/star--v1.png" alt="star--v1" /><img width="20" height="20" src="https://img.icons8.com/color/48/star-half-empty.png" alt="star-half-empty" /><img width="20" height="20" src="https://img.icons8.com/fluency/48/star--v1.png" alt="star--v1" /><img width="20" height="20" src="https://img.icons8.com/fluency/48/star--v1.png" alt="star--v1" /><img width="20" height="20" src="https://img.icons8.com/fluency/48/star--v1.png" alt="star--v1" /></samp></div>
+                <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است چاپگرها و متون بلکه روزنامه و مجله ی مورد نیاز</p>
+            </div>
+
+        </div>
+        <div class="special-title">
+            <p>پیشنهاد ویژه</p>
+            <img src="~/Assets/Images/pngtree-special-offer-vector-free-download-png-image_9173640.png" alt="">
+            <a href="">مشاهده همه</a>
+        </div>
+    </div>
+
+
+    <div class="suggest">
+        <a class="romantic"><div class="romantic-image"></div><p>قرار رمانتیک</p></a>
+        <a class="game"><div class="game-image"></div><p>بازی</p></a>
+        <a class="work"><div class="work-image"></div><p>قرار کاری</p></a>
+    </div>
+
+    <div class="ranking-cafes">
+        <div class="arrow"><img width="40" height="40" src="https://img.icons8.com/ios/50/FFFFFF/right--v1.png" alt="right--v1" /></div>
+        <div class="cafes">
+            <div>
+                <div class="image-cafe1"></div>
+                <div><p class="rank-number">#3</p><a>کافه مارا</a><samp dir="rtl"><img width="20" height="20" src="https://img.icons8.com/color/48/star--v1.png" alt="star--v1" /><img width="20" height="20" src="https://img.icons8.com/color/48/star-half-empty.png" alt="star-half-empty" /><img width="20" height="20" src="https://img.icons8.com/fluency/48/star--v1.png" alt="star--v1" /><img width="20" height="20" src="https://img.icons8.com/fluency/48/star--v1.png" alt="star--v1" /><img width="20" height="20" src="https://img.icons8.com/fluency/48/star--v1.png" alt="star--v1" /></samp></div>
+                <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است چاپگرها و متون بلکه روزنامه و مجله ی مورد نیاز</p>
+            </div>
+            <div>
+                <div class="image-cafe2"></div>
+                <div><p class="rank-number">#2</p><a>کافه یعغوب</a><samp dir="rtl"><img width="20" height="20" src="https://img.icons8.com/color/48/star--v1.png" alt="star--v1" /><img width="20" height="20" src="https://img.icons8.com/color/48/star-half-empty.png" alt="star-half-empty" /><img width="20" height="20" src="https://img.icons8.com/fluency/48/star--v1.png" alt="star--v1" /><img width="20" height="20" src="https://img.icons8.com/fluency/48/star--v1.png" alt="star--v1" /><img width="20" height="20" src="https://img.icons8.com/fluency/48/star--v1.png" alt="star--v1" /></samp></div>
+                <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است چاپگرها و متون بلکه روزنامه و مجله ی مورد نیاز</p>
+            </div>
+            <div>
+                <div class="image-cafe3"></div>
+                <div><p class="rank-number">#1</p><a>کافه سنتر</a><samp dir="rtl"><img width="20" height="20" src="https://img.icons8.com/color/48/star--v1.png" alt="star--v1" /><img width="20" height="20" src="https://img.icons8.com/color/48/star-half-empty.png" alt="star-half-empty" /><img width="20" height="20" src="https://img.icons8.com/fluency/48/star--v1.png" alt="star--v1" /><img width="20" height="20" src="https://img.icons8.com/fluency/48/star--v1.png" alt="star--v1" /><img width="20" height="20" src="https://img.icons8.com/fluency/48/star--v1.png" alt="star--v1" /></samp></div>
+                <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است چاپگرها و متون بلکه روزنامه و مجله ی مورد نیاز</p>
+            </div>
+
+        </div>
+        <div class="ranking-title">
+            <p>رنکینگ</p>
+            <img src="~/Assets/Images/ranking-image.png" alt="">
+            <a href="">مشاهده همه</a>
+        </div>
+    </div>
+
+
+    <div class="view">
+        <div class="text-view"><a>ویو های جذاب</a></div>
+    </div>
+
+
+    <a class="profile-creator">
+        <div class="card1"><p>کافه من</p></div>
+        <div class="card2"><p dir="rtl">پروفایل کافه خودتو بساز و مشتری هاتو زیاد کن !</p></div>
+    </a>
+
+</main>
+
+
+<footer>
+    <div class="name">
+        <p dir="rtl">CafeMan</p>
+        <div>
+            <div dir="rtl">تلفن : 02133858511</div>
+            <div>از ساعت 8 صبح تا 12 شب پاسخگوی شما هستیم</div>
+        </div>
+        <a href="" onclick="topFunction()" id="myBtn" title="Go to top">بازگشت به بالا</a>
+    </div>
+    <div class="row2">
+        <div class="conect-us">
+            <div class="social"><a href=""><img width="40" height="40" src="https://img.icons8.com/ios/50/instagram-new--v1.png" alt="instagram-new--v1" /></a><a href=""><img width="40" height="40" src="https://img.icons8.com/ios/40/telegram.png" alt="telegram" /></a><a href=""><img width="50" height="50" src="https://img.icons8.com/ios/50/linkedin.png" alt="linkedin" /></a></div>
+            <p>با ثبت ایمیل از جدید ترین کافه ها و رویداد های کافه ها با خبر شوید</p>
+            <div class="email"><a href="">ثبت</a><input type="email" name="" id="" placeholder="ایمیل شما"></div>
+        </div>
+        <div class="symbols">
+            <a href=""><img src="~/Assets/Images/namad1.webp" alt=""></a>
+            <a href=""><img src="~/Assets/Images/namad2.png" alt=""></a>
+        </div>
+    </div>
+</footer>

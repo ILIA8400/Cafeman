@@ -1,0 +1,88 @@
+﻿
+@section style{
+    <link rel="stylesheet" href="~/Assets/css/cafeman.css">
+}
+
+
+<header>
+    <p>CafeMan</p>
+    <nav>
+        <div>
+            <a href="ranking.html">رنکینگ</a>
+            <a href="">کافه من</a>
+            <a href="favourite.html">علاقه مندی ها</a>
+        </div>
+        <div class="search-nav">
+            <img width="15" height="15" src="https://img.icons8.com/ios-filled/15/search--v1.png" alt="search--v1" />
+            <input type="text" placeholder="کافه مورد نظرتو پیدا کن">
+            <button href=""><div></div><div></div></button>
+        </div>
+        <div>
+            <a href="signin.html">ورود</a>
+            <a href="signup.html">ثبت نام</a>
+        </div>
+    </nav>
+</header>
+
+
+<main>
+
+    <div class="slider">
+        <div class="liner"></div>
+        <div class="circle c3">3</div>
+        <div class="circle c2">2</div>
+        <div class="circle c1">1</div>
+    </div>
+
+    <div class="intro">
+        <input type="text" class="name" placeholder="نام کافه*" required>
+        <input type="url" class="web" placeholder="ادرس وب سایت">
+        <input type="tel" class="tel" placeholder="تلفن">
+        <input type="text" class="add" placeholder="ادرس*" required>
+        <input type="datetime" class="date" placeholder="زمان ارائه خدمات">
+        <input type="text" class="price" placeholder="قیمت : متوسط و ...*" required>
+        <button id="step1">مرحله بعد</button>
+    </div>
+
+    <div class="add-image">
+        <button>+</button>
+        <p>عکس هاتو تو این قاب بنداز یا رو قاب کلیک کن تا عکساتو انتخاب کنی!</p>
+        <button id="step2">مرحله بعد</button>
+    </div>
+
+    <div class="details">
+        <input type="text" class="spe" placeholder="جزئیات خاص کافه رو وارد کن">
+        <input type="text" class="range" placeholder="رنج قیمت محصولات مثل : 90 تا 180 تومان">
+        <input type="text" class="loc" placeholder="لوکیشن">
+        <button id="step3">تایید</button>
+    </div>
+
+</main>
+
+
+<footer>
+    <div class="name">
+        <p dir="rtl">CafeMan</p>
+        <div>
+            <div dir="rtl">تلفن : 02133858511</div>
+            <div>از ساعت 8 صبح تا 12 شب پاسخگوی شما هستیم</div>
+        </div>
+        <a href="" onclick="topFunction()" id="myBtn" title="Go to top">بازگشت به بالا</a>
+    </div>
+    <div class="row2">
+        <div class="conect-us">
+            <div class="social"><a href=""><img width="40" height="40" src="https://img.icons8.com/ios/50/instagram-new--v1.png" alt="instagram-new--v1" /></a><a href=""><img width="40" height="40" src="https://img.icons8.com/ios/40/telegram.png" alt="telegram" /></a><a href=""><img width="50" height="50" src="https://img.icons8.com/ios/50/linkedin.png" alt="linkedin" /></a></div>
+            <p>با ثبت ایمیل از جدید ترین کافه ها و رویداد های کافه ها با خبر شوید</p>
+            <div class="email"><a href="">ثبت</a><input type="email" name="" id="" placeholder="ایمیل شما"></div>
+        </div>
+        <div class="symbols">
+            <a href=""><img src="~/Assets/Images/namad1.webp" alt=""></a>
+            <a href=""><img src="~/Assets/Images/namad2.png" alt=""></a>
+        </div>
+    </div>
+</footer>
+
+
+@section script{
+    <script src="~/Assets/js/cafeman.js"></script>
+}

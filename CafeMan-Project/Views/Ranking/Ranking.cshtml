@@ -1,0 +1,252 @@
+﻿@section style{
+    <link href="~/Assets/css/ranking.css" rel="stylesheet" />
+}
+
+@section script {
+    <script src="~/Assets/js/nowDateTime.js"></script>
+    <script src="~/Assets/js/search-click.js"></script>
+    <script src="~/Assets/js/filter.js"></script>
+}
+
+@using CafeMan_Project.Models.Entities
+
+@model List<Cafe>
+
+
+<header>
+    <p>CafeMan</p>
+    <nav>
+        <div>
+            <a href="../Views/Profile/Profile.cshtml">رنکینگ</a>
+            <a href="">کافه من</a>
+            <a href="favourite.html">علاقه مندی ها</a>
+        </div>
+        <div class="search-nav">
+            <img width="15" height="15" src="https://img.icons8.com/ios-filled/15/search--v1.png" alt="search--v1" />
+            <input type="text" placeholder="کافه مورد نظرتو پیدا کن">
+            <button href=""><div></div><div></div></button>
+        </div>
+        <div>
+            <a href="signin.html">ورود</a>
+            <a href="signup.html">ثبت نام</a>
+        </div>
+    </nav>
+</header>
+
+
+<main>
+    <div class="date">
+        <p>کافه های تهران</p>
+        <div class="dates">
+            <div class="calender">
+                <p>سه شنبه 21 فروردین</p>
+                <img style="margin-left: 5px;" width="20" height="20" src="https://img.icons8.com/external-flatart-icons-outline-flatarticons/64/external-Calendar-cenima-flatart-icons-outline-flatarticons.png" alt="external-Calendar-cenima-flatart-icons-outline-flatarticons" />
+            </div>
+            <div class="clock">
+                <p id="clo"></p>
+                <img style="margin-left: 3px;" width="20" height="20" src="https://img.icons8.com/windows/512/clock--v3.png" alt="clock--v3" />
+            </div>
+        </div>
+    </div>
+    <div class="box">
+        <div class="ranks">
+
+            @{
+                var ranking = Model.OrderByDescending(c => c.Star).ToList();
+                int rank = 1;
+                var now = DateTime.Now;
+            }
+
+
+            @foreach(var item in ranking)
+            {
+                string isOpen = "";
+               
+                <div class="card">
+                    <div class="dif">
+                        <a class="title">
+                            <p dir="rtl">@rank- @item.CafeName</p>
+                        </a>
+                        <div class="rate">
+                            <div class="row1">
+                                <samp><img width="20" height="20" src="https://img.icons8.com/color/48/star--v1.png" alt="star--v1" /><img width="20" height="20" src="https://img.icons8.com/color/48/star-half-empty.png" alt="star-half-empty" /><img width="20" height="20" src="https://img.icons8.com/fluency/48/star--v1.png" alt="star--v1" /><img width="20" height="20" src="https://img.icons8.com/fluency/48/star--v1.png" alt="star--v1" /><img width="20" height="20" src="https://img.icons8.com/fluency/48/star--v1.png" alt="star--v1" /><img width="20" height="20" src="https://img.icons8.com/fluency/48/star--v1.png" alt="star--v1" /></samp>
+                                <samp>باز است</samp>
+                            </div>
+                            <div class="row2">
+                                <samp>@item.Address</samp>  <samp>قیمت متوسط</samp>   <a class="menu"><img width="20" height="20" src="https://img.icons8.com/external-thin-kawalan-studio/24/external-arrow-up-right-arrows-thin-kawalan-studio.png" alt="external-arrow-up-right-arrows-thin-kawalan-studio" /><p>منو</p><img width="15" height="15" src="https://img.icons8.com/ios/50/restaurant-menu.png" alt="restaurant-menu" /></a>
+                            </div>
+                        </div>
+                        <br>
+                        <hr style="text-align: center; width: 490px;">
+                        <div class="des">
+                            <a>@item.CafeDescription     <img style="margin-top: 10px;" width="15" height="15" src="https://img.icons8.com/ios/50/info--v1.png" alt="info--v1" /></a>
+                        </div>
+                    </div>
+                    <a href="" class="image image1"></a>
+                </div>
+
+                rank = rank +1;
+            }
+
+
+
+            <div class="card">
+                <div class="dif">
+                    <a class="title">
+                        <p dir="rtl">2- کافه اننی</p>
+                    </a>
+                    <div class="rate">
+                        <div class="row1">
+                            <samp><img width="20" height="20" src="https://img.icons8.com/color/48/star--v1.png" alt="star--v1" /><img width="20" height="20" src="https://img.icons8.com/color/48/star-half-empty.png" alt="star-half-empty" /><img width="20" height="20" src="https://img.icons8.com/fluency/48/star--v1.png" alt="star--v1" /><img width="20" height="20" src="https://img.icons8.com/fluency/48/star--v1.png" alt="star--v1" /><img width="20" height="20" src="https://img.icons8.com/fluency/48/star--v1.png" alt="star--v1" /><img width="20" height="20" src="https://img.icons8.com/fluency/48/star--v1.png" alt="star--v1" /></samp>
+                            <samp>باز است</samp>
+                        </div>
+                        <div class="row2">
+                            <samp>تهران-ابوذر</samp>  <samp>قیمت متوسط</samp>   <a class="menu"><img width="20" height="20" src="https://img.icons8.com/external-thin-kawalan-studio/24/external-arrow-up-right-arrows-thin-kawalan-studio.png" alt="external-arrow-up-right-arrows-thin-kawalan-studio" /><p>منو</p><img width="15" height="15" src="https://img.icons8.com/ios/50/restaurant-menu.png" alt="restaurant-menu" /></a>
+                        </div>
+                    </div>
+                    <br>
+                    <hr style="text-align: center; width: 490px;">
+                    <div class="des">
+                        <a>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ.     <img style="margin-top: 10px;" width="15" height="15" src="https://img.icons8.com/ios/50/info--v1.png" alt="info--v1" /></a>
+                    </div>
+                </div>
+                <a href="" class="image image1"></a>
+            </div>
+
+
+
+
+        </div>
+
+
+
+        <div class="filters">
+            <div class="t" id="meals"><img width="15" height="15" src="https://img.icons8.com/ios/50/expand-arrow--v2.png" alt="expand-arrow--v2" /><p>غداها</p></div>
+            <div class="time">
+                <span class="meals">
+                    <p>صبحانه</p><input type="checkbox">
+                </span>
+                <span class="meals">
+                    <p>ناهار</p><input type="checkbox">
+                </span>
+                <span class="meals">
+                    <p>شام</p><input type="checkbox">
+                </span>
+            </div>
+
+            <br>
+
+            <div class="t" id="options"><img width="15" height="15" src="https://img.icons8.com/ios/50/expand-arrow--v2.png" alt="expand-arrow--v2" /><p>اپشن های انلاین</p></div>
+
+            <div class="online">
+                <span class="meals">
+                    <p>رزرو انلاین</p><input type="checkbox">
+                </span>
+                <span class="meals">
+                    <p>تحویل انلاین</p><input type="checkbox">
+                </span>
+            </div>
+
+            <br>
+
+            <div class="t" id="prices"><img width="15" height="15" src="https://img.icons8.com/ios/50/expand-arrow--v2.png" alt="expand-arrow--v2" /><p>قیمت</p></div>
+            <div class="pricerange">
+                <span class="meals">
+                    <p>پایین</p><input type="checkbox">
+                </span>
+                <span class="meals">
+                    <p>متوسط</p><input type="checkbox">
+                </span>
+                <span class="meals">
+                    <p>بالا</p><input type="checkbox">
+                </span>
+            </div>
+
+            <br>
+
+            <div class="t" id="rate"><img width="15" height="15" src="https://img.icons8.com/ios/50/expand-arrow--v2.png" alt="expand-arrow--v2" /><p>رتبه بندی</p></div>
+            <div class="rates">
+                <span class="meals">
+                    <p>خوب</p><input type="checkbox">
+                </span>
+                <span class="meals">
+                    <p>متوسط</p><input type="checkbox">
+                </span>
+                <span class="meals">
+                    <p>عالی</p><input type="checkbox">
+                </span>
+            </div>
+
+            <br>
+
+            <div class="t" id="good"><img width="15" height="15" src="https://img.icons8.com/ios/50/expand-arrow--v2.png" alt="expand-arrow--v2" /><p>خوبه برای</p></div>
+            <div class="goodfor">
+                <span class="meals">
+                    <p>خانواده با بچه</p><input type="checkbox">
+                </span>
+                <span class="meals">
+                    <p>بچه ها</p><input type="checkbox">
+                </span>
+                <span class="meals">
+                    <p>رمانتیک</p><input type="checkbox">
+                </span>
+                <span class="meals">
+                    <p>قرار کاری</p><input type="checkbox">
+                </span>
+                <span class="meals">
+                    <p>مناسبت های خاص</p><input type="checkbox">
+                </span>
+                <span class="meals">
+                    <p>کافه های تازه</p><input type="checkbox">
+                </span>
+                <span class="meals">
+                    <p>منظره دیدنی</p><input type="checkbox">
+                </span>
+                <span class="meals">
+                    <p>بازی کردن</p><input type="checkbox">
+                </span>
+            </div>
+
+            <br>
+
+            <div class="t" id="open"><img width="15" height="15" src="https://img.icons8.com/ios/50/expand-arrow--v2.png" alt="expand-arrow--v2" /><p>باز بودن</p></div>
+            <div class="opening">
+                <span class="meals">
+                    <p>باز بودن</p><input type="checkbox">
+                </span>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="page-number">
+        <a href="" class="arrow arrow-l"><img width="20" height="20" src="https://img.icons8.com/ios-filled/50/left.png" alt="left" /></a>
+        <a href="" class="num num1">1</a>
+        <a href="" class="num">2</a>
+        <a href="" class="num">3</a>
+        <a href="" class="arrow arrow-r"><img width="20" height="20" src="https://img.icons8.com/ios-filled/50/right--v1.png" alt="right--v1" /></a>
+    </div>
+</main>
+<footer>
+    <div class="name">
+        <p dir="rtl">CafeMan</p>
+        <div>
+            <div dir="rtl">تلفن : 02133858511</div>
+            <div>از ساعت 8 صبح تا 12 شب پاسخگوی شما هستیم</div>
+        </div>
+        <a href="" onclick="topFunction()" id="myBtn" title="Go to top">بازگشت به بالا</a>
+    </div>
+    <div class="row2">
+        <div class="conect-us">
+            <div class="social"><a href=""><img width="40" height="40" src="https://img.icons8.com/ios/50/instagram-new--v1.png" alt="instagram-new--v1" /></a><a href=""><img width="40" height="40" src="https://img.icons8.com/ios/40/telegram.png" alt="telegram" /></a><a href=""><img width="50" height="50" src="https://img.icons8.com/ios/50/linkedin.png" alt="linkedin" /></a></div>
+            <p>با ثبت ایمیل از جدید ترین کافه ها و رویداد های کافه ها با خبر شوید</p>
+            <div class="email"><a href="">ثبت</a><input type="email" name="" id="" placeholder="ایمیل شما"></div>
+        </div>
+        <div class="symbols">
+            <a href=""><img src="~/Assets/Images/namad1.webp" alt=""></a>
+            <a href=""><img src="~/Assets/Images/namad2.png" alt=""></a>
+        </div>
+    </div>
+</footer>
+
+

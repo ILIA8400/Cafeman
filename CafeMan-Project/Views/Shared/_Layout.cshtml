@@ -1,0 +1,18 @@
+﻿<!DOCTYPE html>
+
+<html lang="fa">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title</title>
+    @RenderSection("style",false)
+</head>
+<body>
+
+    <div class="container">
+        @RenderBody()
+    </div>
+
+    @RenderSection("script", false)
+</body>
+</html>
