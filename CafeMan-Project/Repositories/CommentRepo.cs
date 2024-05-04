@@ -1,5 +1,6 @@
 ﻿using CafeMan_Project.Models.Dal;
 using CafeMan_Project.Models.Entities;
+using Microsoft.EntityFrameworkCore;
 
 namespace CafeMan_Project.Repositories
 {
@@ -14,30 +15,30 @@ namespace CafeMan_Project.Repositories
 
         public void Delete(int entityId)
         {
-            var comment = ctx.Comments.SingleOrDefault(c => c.CommentId == entityId);
+            var comment = ctx.Comments.SingleOrDefaultAsync(c => c.CommentId == entityId);
 
             if (comment != null)
                 ctx.Remove(comment);
         }
 
-        public ICollection<Comment> GetAll()
+        public Task<List<Comment>> GetAll()
         {
-            return ctx.Comments.ToList();
+            return ctx.Comments.ToListAsync();
         }
 
-        public Comment? GetById(int id)
+        public Task<Comment?> GetById(int id)
         {
-            return ctx.Comments.SingleOrDefault(c => c.CommentId == id);
+            return ctx.Comments.SingleOrDefaultAsync(c => c.CommentId == id);
         }
 
         public void Insert(Comment entity)
         {
-            ctx.Add(entity);
+            ctx.AddAsync(entity);
         }
 
         public void Save()
         {
-            ctx.SaveChanges();
+            ctx.SaveChangesAsync();
         }
 
         public void Update(Comment entity)

@@ -15,30 +15,30 @@ namespace CafeMan_Project.Repositories
 
         public void Delete(int entityId)
         {
-            var cafe = ctx.Cafes.SingleOrDefault(c => c.CafeId == entityId);
+            var cafe = ctx.Cafes.SingleOrDefaultAsync(c => c.CafeId == entityId);
 
             if (cafe != null)
             ctx.Remove(cafe);
         }
 
-        public ICollection<Cafe> GetAll()
+        public async Task<List<Cafe>> GetAll()
         {
-            return ctx.Cafes.ToList();
+            return await ctx.Cafes.ToListAsync();
         }
 
-        public Cafe? GetById(int Id)
+        public Task<Cafe?> GetById(int Id)
         {
-            return ctx.Cafes.SingleOrDefault(c => c.CafeId == Id);
+            return ctx.Cafes.SingleOrDefaultAsync(c => c.CafeId == Id);
         }
 
         public void Insert(Cafe entity)
         {
-            ctx.Add(entity);
+            ctx.AddAsync(entity);
         }
 
         public void Save()
         {
-            ctx.SaveChanges();
+            ctx.SaveChangesAsync();
         }
 
         public void Update(Cafe entity)
