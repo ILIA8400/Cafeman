@@ -13,9 +13,9 @@ namespace CafeMan_Project.Repositories
             this.ctx = ctx;
         }
 
-        public void Delete(int entityId)
+        public async void Delete(int entityId)
         {
-            var comment = ctx.Comments.SingleOrDefaultAsync(c => c.CommentId == entityId);
+            var comment = await ctx.Comments.SingleOrDefaultAsync(c => c.CommentId == entityId);
 
             if (comment != null)
                 ctx.Remove(comment);
@@ -31,14 +31,14 @@ namespace CafeMan_Project.Repositories
             return ctx.Comments.SingleOrDefaultAsync(c => c.CommentId == id);
         }
 
-        public void Insert(Comment entity)
+        public async void Insert(Comment entity)
         {
-            ctx.AddAsync(entity);
+            await ctx.AddAsync(entity);
         }
 
-        public void Save()
+        public async void Save()
         {
-            ctx.SaveChangesAsync();
+            await ctx.SaveChangesAsync();
         }
 
         public void Update(Comment entity)

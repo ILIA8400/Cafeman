@@ -13,9 +13,9 @@ namespace CafeMan_Project.Repositories
             this.ctx = ctx;
         }
 
-        public void Delete(int entityId)
+        public async void Delete(int entityId)
         {
-            var edible = ctx.Edibles.SingleOrDefaultAsync(c => c.EdiblesId == entityId);
+            var edible = await ctx.Edibles.SingleOrDefaultAsync(c => c.EdiblesId == entityId);
 
             if (edible != null)
                 ctx.Remove(edible);
@@ -31,14 +31,14 @@ namespace CafeMan_Project.Repositories
             return ctx.Edibles.SingleOrDefaultAsync(c => c.EdiblesId == id);
         }
 
-        public void Insert(Edibles entity)
+        public async void Insert(Edibles entity)
         {
-            ctx.AddAsync(entity);
+            await ctx.AddAsync(entity);
         }
 
-        public void Save()
+        public async void Save()
         {
-            ctx.SaveChangesAsync();
+            await ctx.SaveChangesAsync();
         }
 
         public void Update(Edibles entity)
