@@ -19,22 +19,24 @@ namespace CafeMan_Project.Controllers
         }
 
 
-        [Route("Profile/{CafeId:int}")]
-        public IActionResult Profile(int CafeId)
+        [Route("Profile")]
+        public async Task<IActionResult> Profile(int q)
         {
-            var cafes = cafe.GetById(CafeId);
-            var comments = comment.GetAll();
-            var edibles = edible.GetAll();
+
+            var cafes = await cafe.GetById(q);
+            var comments = await comment.GetAll();
+            var edibles = await edible.GetAll();
 
             var profileViewModel = new ProfileViewModel
             {
                 Cafe = cafes,
-                Comments = comments.Where(c => c.CafeId == CafeId).ToList(),
-                Edibles = edibles.Where(c=>c.CafeId == CafeId).ToList()  //Problom =========> menu
+                Comments = comments.Where(c => c.CafeId == q).ToList(),
+                Edibles = edibles.Where(c=>c.CafeId == q).ToList()  //Problom =========> menu
             };
+
             
             if(profileViewModel.Cafe == null)
-                return NotFound();
+                return BadRequest();
 
             return View(profileViewModel);
         }

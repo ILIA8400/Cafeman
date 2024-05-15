@@ -9,6 +9,7 @@ namespace CafeMan_Project.Models.Configs
         public void Configure(EntityTypeBuilder<User> builder)
         {
             builder.HasMany(c => c.Comments).WithOne().OnDelete(DeleteBehavior.NoAction);
+            builder.HasKey(c => c.Id);
         }
     }
 }

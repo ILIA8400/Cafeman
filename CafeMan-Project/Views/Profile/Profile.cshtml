@@ -46,8 +46,17 @@
 
     </div>
     <div class="sub">
+@*         @{
+            string path = "";
+            var image = Model.Cafe.CafeImages.Take(1);
+            foreach(var item in image)
+            {
+                path = item.Path;
+            }
+        }
+ *@
         <div class="images-cafe">
-            <div class="i1"><a href="">دیدن همه <samp>(157)</samp></a></div>
+            <div class="i1" @* style="background-image: url(@path);" *@><a href="">دیدن همه <samp>(157)</samp></a></div>
             <div class="i2"></div>
             <div class="i3"></div>
             <div class="i4"></div>

@@ -12,10 +12,11 @@ namespace CafeMan_Project.Controllers
         {
             this.cafe = cafe;
         }
+
         [Route("Ranking/List")]
-        public IActionResult Ranking()
+        public async Task<IActionResult> Ranking()
         {
-            var cafes = cafe.GetAll();//.OrderByDescending(c=>c.Star);
+            var cafes = await cafe.GetAll();//.OrderByDescending(c=>c.Star);
             
             return View(cafes);
         }

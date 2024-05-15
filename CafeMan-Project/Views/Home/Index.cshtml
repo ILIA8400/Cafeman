@@ -17,9 +17,9 @@
     <p>CafeMan</p>
     <nav>
         <div>
-            <a href="@Url.Action("Ranking","Ranking")">رنکینگ</a>
-            <a href="">کافه من</a>
-            <a href="@Url.Action("Favourite","Favourite")">علاقه مندی ها</a>
+            <a asp-controller="Ranking" asp-action="Ranking">رنکینگ</a>
+            <a asp-controller="Cafeman" asp-action="Cafeman">کافه من</a>
+            <a asp-controller="Favourite" asp-action="Favourite">علاقه مندی ها</a>
         </div>
         <div class="search-nav">
             <img width="15" height="15" src="https://img.icons8.com/ios-filled/15/search--v1.png" alt="search--v1" />
@@ -27,8 +27,8 @@
             <button href=""><div></div><div></div></button>
         </div>
         <div>
-            <a href="signin.html">ورود</a>
-            <a href="signup.html">ثبت نام</a>
+            <a asp-controller="SignIn" asp-action="SignIn">ورود</a>
+            <a asp-controller="SignUp" asp-action="SignUp">ثبت نام</a>
         </div>
     </nav>
 </header>
@@ -51,30 +51,36 @@
         </div>
     </div>
 
+   
+
     <div class="special-cafes">
-        <div class="arrow"><img width="40" height="40" src="https://img.icons8.com/ios/50/FFFFFF/left--v1.png" alt="left--v1" /></div>
+        
         <div class="cafes">
-            <div>
-                <div class="image-cafe1"></div>
-                <div><a>کافه مارا</a><samp dir="rtl"><img width="20" height="20" src="https://img.icons8.com/color/48/star--v1.png" alt="star--v1" /><img width="20" height="20" src="https://img.icons8.com/color/48/star-half-empty.png" alt="star-half-empty" /><img width="20" height="20" src="https://img.icons8.com/fluency/48/star--v1.png" alt="star--v1" /><img width="20" height="20" src="https://img.icons8.com/fluency/48/star--v1.png" alt="star--v1" /><img width="20" height="20" src="https://img.icons8.com/fluency/48/star--v1.png" alt="star--v1" /></samp></div>
-                <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است چاپگرها و متون بلکه روزنامه و مجله ی مورد نیاز</p>
-            </div>
-            <div>
+
+            @foreach(var cafe in Model.Take(3))
+            {
+                <div>
+                    <div class="image-cafe1"></div>
+                    <div><a style="cursor:pointer" asp-controller="Profile" asp-action="Profile" asp-route-q="@cafe.CafeId" id="link">@cafe.CafeName</a><samp dir="rtl"><img width="20" height="20" src="https://img.icons8.com/color/48/star--v1.png" alt="star--v1" /><img width="20" height="20" src="https://img.icons8.com/color/48/star-half-empty.png" alt="star-half-empty" /><img width="20" height="20" src="https://img.icons8.com/fluency/48/star--v1.png" alt="star--v1" /><img width="20" height="20" src="https://img.icons8.com/fluency/48/star--v1.png" alt="star--v1" /><img width="20" height="20" src="https://img.icons8.com/fluency/48/star--v1.png" alt="star--v1" /></samp></div>
+                    <p>@cafe.CafeDescription</p>
+                </div>
+            }
+ 
+ @*            <div>
                 <div class="image-cafe2"></div>
-                <div><a>کافه یعغوب</a><samp dir="rtl"><img width="20" height="20" src="https://img.icons8.com/color/48/star--v1.png" alt="star--v1" /><img width="20" height="20" src="https://img.icons8.com/color/48/star-half-empty.png" alt="star-half-empty" /><img width="20" height="20" src="https://img.icons8.com/fluency/48/star--v1.png" alt="star--v1" /><img width="20" height="20" src="https://img.icons8.com/fluency/48/star--v1.png" alt="star--v1" /><img width="20" height="20" src="https://img.icons8.com/fluency/48/star--v1.png" alt="star--v1" /></samp></div>
+                <div><a id="link">کافه یعغوب</a><samp dir="rtl"><img width="20" height="20" src="https://img.icons8.com/color/48/star--v1.png" alt="star--v1" /><img width="20" height="20" src="https://img.icons8.com/color/48/star-half-empty.png" alt="star-half-empty" /><img width="20" height="20" src="https://img.icons8.com/fluency/48/star--v1.png" alt="star--v1" /><img width="20" height="20" src="https://img.icons8.com/fluency/48/star--v1.png" alt="star--v1" /><img width="20" height="20" src="https://img.icons8.com/fluency/48/star--v1.png" alt="star--v1" /></samp></div>
                 <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است چاپگرها و متون بلکه روزنامه و مجله ی مورد نیاز</p>
             </div>
             <div>
                 <div class="image-cafe3"></div>
-                <div><a>کافه سنتر</a><samp dir="rtl"><img width="20" height="20" src="https://img.icons8.com/color/48/star--v1.png" alt="star--v1" /><img width="20" height="20" src="https://img.icons8.com/color/48/star-half-empty.png" alt="star-half-empty" /><img width="20" height="20" src="https://img.icons8.com/fluency/48/star--v1.png" alt="star--v1" /><img width="20" height="20" src="https://img.icons8.com/fluency/48/star--v1.png" alt="star--v1" /><img width="20" height="20" src="https://img.icons8.com/fluency/48/star--v1.png" alt="star--v1" /></samp></div>
+                <div><a id="link">کافه سنتر</a><samp dir="rtl"><img width="20" height="20" src="https://img.icons8.com/color/48/star--v1.png" alt="star--v1" /><img width="20" height="20" src="https://img.icons8.com/color/48/star-half-empty.png" alt="star-half-empty" /><img width="20" height="20" src="https://img.icons8.com/fluency/48/star--v1.png" alt="star--v1" /><img width="20" height="20" src="https://img.icons8.com/fluency/48/star--v1.png" alt="star--v1" /><img width="20" height="20" src="https://img.icons8.com/fluency/48/star--v1.png" alt="star--v1" /></samp></div>
                 <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است چاپگرها و متون بلکه روزنامه و مجله ی مورد نیاز</p>
-            </div>
+            </div> *@
 
         </div>
         <div class="special-title">
             <p>پیشنهاد ویژه</p>
             <img src="~/Assets/Images/pngtree-special-offer-vector-free-download-png-image_9173640.png" alt="">
-            <a href="">مشاهده همه</a>
         </div>
     </div>
 
@@ -86,14 +92,20 @@
     </div>
 
     <div class="ranking-cafes">
-        <div class="arrow"><img width="40" height="40" src="https://img.icons8.com/ios/50/FFFFFF/right--v1.png" alt="right--v1" /></div>
+
         <div class="cafes">
-            <div>
-                <div class="image-cafe1"></div>
-                <div><p class="rank-number">#3</p><a>کافه مارا</a><samp dir="rtl"><img width="20" height="20" src="https://img.icons8.com/color/48/star--v1.png" alt="star--v1" /><img width="20" height="20" src="https://img.icons8.com/color/48/star-half-empty.png" alt="star-half-empty" /><img width="20" height="20" src="https://img.icons8.com/fluency/48/star--v1.png" alt="star--v1" /><img width="20" height="20" src="https://img.icons8.com/fluency/48/star--v1.png" alt="star--v1" /><img width="20" height="20" src="https://img.icons8.com/fluency/48/star--v1.png" alt="star--v1" /></samp></div>
-                <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است چاپگرها و متون بلکه روزنامه و مجله ی مورد نیاز</p>
-            </div>
-            <div>
+
+            @foreach (var cafe in Model.Where(c => c.Rank < 4))
+            {
+                <div>
+                    <div class="image-cafe1"></div>
+                    <div><p class="rank-number">#@cafe.Rank</p><a style="cursor:pointer" asp-controller="Profile" asp-action="Profile" asp-route-q="@cafe.CafeId" id="link">@cafe.CafeName</a><samp dir="rtl"><img width="20" height="20" src="https://img.icons8.com/color/48/star--v1.png" alt="star--v1" /><img width="20" height="20" src="https://img.icons8.com/color/48/star-half-empty.png" alt="star-half-empty" /><img width="20" height="20" src="https://img.icons8.com/fluency/48/star--v1.png" alt="star--v1" /><img width="20" height="20" src="https://img.icons8.com/fluency/48/star--v1.png" alt="star--v1" /><img width="20" height="20" src="https://img.icons8.com/fluency/48/star--v1.png" alt="star--v1" /></samp></div>
+                    <p>@cafe.CafeDescription</p>
+                </div>
+            }
+ 
+
+           @*  <div>
                 <div class="image-cafe2"></div>
                 <div><p class="rank-number">#2</p><a>کافه یعغوب</a><samp dir="rtl"><img width="20" height="20" src="https://img.icons8.com/color/48/star--v1.png" alt="star--v1" /><img width="20" height="20" src="https://img.icons8.com/color/48/star-half-empty.png" alt="star-half-empty" /><img width="20" height="20" src="https://img.icons8.com/fluency/48/star--v1.png" alt="star--v1" /><img width="20" height="20" src="https://img.icons8.com/fluency/48/star--v1.png" alt="star--v1" /><img width="20" height="20" src="https://img.icons8.com/fluency/48/star--v1.png" alt="star--v1" /></samp></div>
                 <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است چاپگرها و متون بلکه روزنامه و مجله ی مورد نیاز</p>
@@ -102,13 +114,13 @@
                 <div class="image-cafe3"></div>
                 <div><p class="rank-number">#1</p><a>کافه سنتر</a><samp dir="rtl"><img width="20" height="20" src="https://img.icons8.com/color/48/star--v1.png" alt="star--v1" /><img width="20" height="20" src="https://img.icons8.com/color/48/star-half-empty.png" alt="star-half-empty" /><img width="20" height="20" src="https://img.icons8.com/fluency/48/star--v1.png" alt="star--v1" /><img width="20" height="20" src="https://img.icons8.com/fluency/48/star--v1.png" alt="star--v1" /><img width="20" height="20" src="https://img.icons8.com/fluency/48/star--v1.png" alt="star--v1" /></samp></div>
                 <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است چاپگرها و متون بلکه روزنامه و مجله ی مورد نیاز</p>
-            </div>
+            </div> *@
 
         </div>
         <div class="ranking-title">
             <p>رنکینگ</p>
             <img src="~/Assets/Images/ranking-image.png" alt="">
-            <a href="">مشاهده همه</a>
+            <a asp-action="Ranking" asp-controller="Ranking">مشاهده همه</a>
         </div>
     </div>
 
@@ -118,7 +130,7 @@
     </div>
 
 
-    <a class="profile-creator">
+    <a asp-controller="Cafeman" asp-action="Cafeman" class="profile-creator">
         <div class="card1"><p>کافه من</p></div>
         <div class="card2"><p dir="rtl">پروفایل کافه خودتو بساز و مشتری هاتو زیاد کن !</p></div>
     </a>

@@ -3,6 +3,10 @@
     <link rel="stylesheet" href="~/Assets/css/cafeman.css">
 }
 
+@using CafeMan_Project.Models.Entities;
+
+@model Cafe
+
 
 <header>
     <p>CafeMan</p>
@@ -34,28 +38,32 @@
         <div class="circle c1">1</div>
     </div>
 
-    <div class="intro">
-        <input type="text" class="name" placeholder="نام کافه*" required>
-        <input type="url" class="web" placeholder="ادرس وب سایت">
-        <input type="tel" class="tel" placeholder="تلفن">
-        <input type="text" class="add" placeholder="ادرس*" required>
-        <input type="datetime" class="date" placeholder="زمان ارائه خدمات">
-        <input type="text" class="price" placeholder="قیمت : متوسط و ...*" required>
-        <button id="step1">مرحله بعد</button>
-    </div>
+    <form action="/" method="post">
 
-    <div class="add-image">
-        <button>+</button>
-        <p>عکس هاتو تو این قاب بنداز یا رو قاب کلیک کن تا عکساتو انتخاب کنی!</p>
-        <button id="step2">مرحله بعد</button>
-    </div>
+        <div class="intro">
+            <input asp-for="CafeName" type="text" class="name" placeholder="نام کافه*" required>
+            <input asp-for="Website" type="url" class="web" placeholder="ادرس وب سایت">
+            <input asp-for="Tel" type="tel" class="tel" placeholder="تلفن">
+            <input asp-for="Address" type="text" class="add" placeholder="ادرس*" required>
+            <input type="datetime" class="date" placeholder="زمان ارائه خدمات">
+            <input asp-for="PriceRange" type="text" class="price" placeholder="قیمت : متوسط و ...*" required>
+            <button id="step1">مرحله بعد</button>
+        </div>
 
-    <div class="details">
-        <input type="text" class="spe" placeholder="جزئیات خاص کافه رو وارد کن">
-        <input type="text" class="range" placeholder="رنج قیمت محصولات مثل : 90 تا 180 تومان">
-        <input type="text" class="loc" placeholder="لوکیشن">
-        <button id="step3">تایید</button>
-    </div>
+        <div class="add-image">
+            <button>+</button>
+            <p>عکس هاتو تو این قاب بنداز یا رو قاب کلیک کن تا عکساتو انتخاب کنی!</p>
+            <button id="step2">مرحله بعد</button>
+        </div>
+
+        <div class="details">
+            <input asp-for="Details" type="text" class="spe" placeholder="جزئیات خاص کافه رو وارد کن">
+            <input type="text" class="range" placeholder="رنج قیمت محصولات مثل : 90 تا 180 تومان">
+            <input asp-for="Location" type="text" class="loc" placeholder="لوکیشن">
+            <button type="submit" id="step3">تایید</button>
+        </div>
+    </form>
+
 
 </main>
 

@@ -4,6 +4,7 @@ using CafeMan_Project.Models.Dal;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CafeMan_Project.Models.Migrations
 {
     [DbContext(typeof(CafemanDbContext))]
-    partial class CafemanDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240509160022_add-table-Favourite-andRelations")]
+    partial class addtableFavouriteandRelations
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -211,6 +214,9 @@ namespace CafeMan_Project.Models.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("FavouriteId"));
 
                     b.Property<int>("CafeId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("UserFId")
                         .HasColumnType("int");
 
                     b.Property<string>("UserId")

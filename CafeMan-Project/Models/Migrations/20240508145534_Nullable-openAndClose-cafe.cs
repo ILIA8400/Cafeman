@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace CafeMan_Project.Models.Migrations
 {
     /// <inheritdoc />
-    public partial class dateTimetotimespan : Migration
+    public partial class NullableopenAndClosecafe : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -15,37 +15,41 @@ namespace CafeMan_Project.Models.Migrations
                 name: "OpeningTime",
                 table: "Cafes",
                 type: "time",
+                nullable: true,
+                oldClrType: typeof(TimeSpan),
+                oldType: "time");
+
+            migrationBuilder.AlterColumn<TimeSpan>(
+                name: "ClosingTime",
+                table: "Cafes",
+                type: "time",
+                nullable: true,
+                oldClrType: typeof(TimeSpan),
+                oldType: "time");
+        }
+
+        /// <inheritdoc />
+        protected override void Down(MigrationBuilder migrationBuilder)
+        {
+            migrationBuilder.AlterColumn<TimeSpan>(
+                name: "OpeningTime",
+                table: "Cafes",
+                type: "time",
                 nullable: false,
-                oldClrType: typeof(DateTime),
-                oldType: "datetime2");
+                defaultValue: new TimeSpan(0, 0, 0, 0, 0),
+                oldClrType: typeof(TimeSpan),
+                oldType: "time",
+                oldNullable: true);
 
             migrationBuilder.AlterColumn<TimeSpan>(
                 name: "ClosingTime",
                 table: "Cafes",
                 type: "time",
                 nullable: false,
-                oldClrType: typeof(DateTime),
-                oldType: "datetime2");
-        }
-
-        /// <inheritdoc />
-        protected override void Down(MigrationBuilder migrationBuilder)
-        {
-            migrationBuilder.AlterColumn<DateTime>(
-                name: "OpeningTime",
-                table: "Cafes",
-                type: "datetime2",
-                nullable: false,
+                defaultValue: new TimeSpan(0, 0, 0, 0, 0),
                 oldClrType: typeof(TimeSpan),
-                oldType: "time");
-
-            migrationBuilder.AlterColumn<DateTime>(
-                name: "ClosingTime",
-                table: "Cafes",
-                type: "datetime2",
-                nullable: false,
-                oldClrType: typeof(TimeSpan),
-                oldType: "time");
+                oldType: "time",
+                oldNullable: true);
         }
     }
 }

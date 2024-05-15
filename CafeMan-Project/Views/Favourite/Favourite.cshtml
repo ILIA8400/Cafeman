@@ -8,6 +8,12 @@
     <script src="~/Assets/js/search-click.js"></script>
 }
 
+@using CafeMan_Project.Models.Entities
+
+@model User
+
+
+
 <header>
     <p>CafeMan</p>
     <nav>
@@ -42,53 +48,35 @@
 
     <div class="cafes">
 
-        <div class="cafe-card cafe1">
-            <img src="~/Assets/Images/Profile/behtarin-coffee-shop-shike-tehran.jpg" alt="Cafe Image">
-            <div class="cafe-details">
-                <div><h3><a href="">کافه کارا</a><samp id="rank">1#</samp></h3><a class="unsave"><img width="25" height="25" src="https://img.icons8.com/ios-glyphs/25/hearts.png" alt="hearts" /></a><a class="save"><img width="25" height="25" src="https://img.icons8.com/color/25/filled-like.png" alt="filled-like" /></a></div>
-                <p class="des">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز</p>
-            </div>
-        </div>
+        @if(Model.Favourites != null)
+        {
 
-        <div class="cafe-card cafe2">
-            <img src="~/Assets/Images/Profile/behtarin-coffee-shop-shike-tehran.jpg" alt="Cafe Image">
-            <div class="cafe-details">
-                <div><h3><a href="">کافه کارا</a><samp id="rank">1#</samp></h3><a class="unsave"><img width="25" height="25" src="https://img.icons8.com/ios-glyphs/25/hearts.png" alt="hearts" /></a><a class="save"><img width="25" height="25" src="https://img.icons8.com/color/25/filled-like.png" alt="filled-like" /></a></div>
-                <p class="des">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز</p>
-            </div>
-        </div>
+            @foreach (var fav in Model.Favourites)
+            {
+                <div class="cafe-card">
+                    <img src="~/Assets/Images/Profile/behtarin-coffee-shop-shike-tehran.jpg" alt="Cafe Image">
+                    <div class="cafe-details">
+                        <div><h3><a href="">@fav.Cafe.CafeName</a><samp id="rank">1#</samp></h3><a class="unsave"><img width="25" height="25" src="https://img.icons8.com/ios-glyphs/25/hearts.png" alt="hearts" /></a><a class="save"><img width="25" height="25" src="https://img.icons8.com/color/25/filled-like.png" alt="filled-like" /></a></div>
+                        <p class="des">@fav.Cafe.CafeDescription</p>
+                    </div>
+                </div>
+            }
 
-        <div class="cafe-card cafe3">
-            <img src="~/Assets/Images/Profile/behtarin-coffee-shop-shike-tehran.jpg" alt="Cafe Image">
-            <div class="cafe-details">
-                <div><h3><a href="">کافه کارا</a><samp id="rank">1#</samp></h3><a class="unsave"><img width="25" height="25" src="https://img.icons8.com/ios-glyphs/25/hearts.png" alt="hearts" /></a><a class="save"><img width="25" height="25" src="https://img.icons8.com/color/25/filled-like.png" alt="filled-like" /></a></div>
-                <p class="des">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز</p>
-            </div>
-        </div>
+        }
+        else
+        {
+            <h1>شما هنوز کافه مورد علاقه ای ندارید</h1>
+        }
 
-        <div class="cafe-card cafe4">
+ @*        <div class="cafe-card cafe1">
             <img src="~/Assets/Images/Profile/behtarin-coffee-shop-shike-tehran.jpg" alt="Cafe Image">
             <div class="cafe-details">
                 <div><h3><a href="">کافه کارا</a><samp id="rank">1#</samp></h3><a class="unsave"><img width="25" height="25" src="https://img.icons8.com/ios-glyphs/25/hearts.png" alt="hearts" /></a><a class="save"><img width="25" height="25" src="https://img.icons8.com/color/25/filled-like.png" alt="filled-like" /></a></div>
                 <p class="des">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز</p>
             </div>
-        </div>
+        </div> *@
 
-        <div class="cafe-card cafe5">
-            <img src="~/Assets/Images/Profile/behtarin-coffee-shop-shike-tehran.jpg" alt="Cafe Image">
-            <div class="cafe-details">
-                <div><h3><a href="">کافه کارا</a><samp id="rank">1#</samp></h3><a class="unsave"><img width="25" height="25" src="https://img.icons8.com/ios-glyphs/25/hearts.png" alt="hearts" /></a><a class="save"><img width="25" height="25" src="https://img.icons8.com/color/25/filled-like.png" alt="filled-like" /></a></div>
-                <p class="des">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز</p>
-            </div>
-        </div>
 
-        <div class="cafe-card cafe6">
-            <img src="~/Assets/Images/Profile/behtarin-coffee-shop-shike-tehran.jpg" alt="Cafe Image">
-            <div class="cafe-details">
-                <div><h3><a href="">کافه کارا</a><samp id="rank">1#</samp></h3><a class="unsave"><img width="25" height="25" src="https://img.icons8.com/ios-glyphs/25/hearts.png" alt="hearts" /></a><a class="save"><img width="25" height="25" src="https://img.icons8.com/color/25/filled-like.png" alt="filled-like" /></a></div>
-                <p class="des">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز</p>
-            </div>
-        </div>
 
     </div>
 

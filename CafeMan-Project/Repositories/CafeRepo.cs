@@ -8,7 +8,7 @@ namespace CafeMan_Project.Repositories
     {
         private readonly CafemanDbContext ctx;
 
-        public CafeRepo(CafemanDbContext ctx) 
+        public CafeRepo(CafemanDbContext ctx)
         {
             this.ctx = ctx;
         }
@@ -18,7 +18,7 @@ namespace CafeMan_Project.Repositories
             var cafe = await ctx.Cafes.SingleOrDefaultAsync(c => c.CafeId == entityId);
 
             if (cafe != null)
-            ctx.Remove(cafe);
+                ctx.Remove(cafe);
         }
 
         public async Task<List<Cafe>> GetAll()

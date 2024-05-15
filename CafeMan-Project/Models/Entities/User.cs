@@ -1,15 +1,15 @@
-﻿namespace CafeMan_Project.Models.Entities
+﻿using Microsoft.AspNetCore.Identity;
+
+namespace CafeMan_Project.Models.Entities
 {
-    public class User
+    public class User : IdentityUser
     {
-        public int UserId { get; set; }
-        public decimal? Phone { get; set; }
-        public string? Email { get; set; }
-        public string Password { get; set; }
-        public bool IsCafeOwner { get; set; }
+
+        public bool IsCafeOwner { get; set; } = false;
         public ICollection<Cafe> Cafes { get; set; }
         public ICollection<Comment> Comments { get; set; }
         public bool IsDeleted { get; set; } = false;
+        public ICollection<Favourite> Favourites { get; set; }
 
     }
 }
