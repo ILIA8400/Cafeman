@@ -51,7 +51,7 @@ namespace CafeMan_Project
 
 
             builder.Services.AddScoped<IUserRepository<User>,UserRepo>();
-            builder.Services.AddScoped<IRepository<Cafe>,CafeRepo>();
+            builder.Services.AddScoped<ICafeRepository<Cafe>,CafeRepo>();
             builder.Services.AddScoped<IRepository<Edibles>, EdibleRepo>();
             builder.Services.AddScoped<IRepository<Comment>, CommentRepo>();
 

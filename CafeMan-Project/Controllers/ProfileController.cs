@@ -7,11 +7,11 @@ namespace CafeMan_Project.Controllers
 {
     public class ProfileController : Controller
     {
-        private readonly IRepository<Cafe> cafe;
+        private readonly ICafeRepository<Cafe> cafe;
         private readonly IRepository<Comment> comment;
         private readonly IRepository<Edibles> edible;
 
-        public ProfileController(IRepository<Cafe> cafe,IRepository<Comment> comment,IRepository<Edibles> edible)
+        public ProfileController(ICafeRepository<Cafe> cafe,IRepository<Comment> comment,IRepository<Edibles> edible)
         {
             this.cafe = cafe;
             this.comment = comment;

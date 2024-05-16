@@ -6,9 +6,9 @@ namespace CafeMan_Project.Controllers
 {
     public class SearchApiController : Controller
     {
-        private readonly IRepository<Cafe> cafeRepo;
+        private readonly ICafeRepository<Cafe> cafeRepo;
 
-        public SearchApiController(IRepository<Cafe> cafeRepo)
+        public SearchApiController(ICafeRepository<Cafe> cafeRepo)
         {
             this.cafeRepo = cafeRepo;
         }

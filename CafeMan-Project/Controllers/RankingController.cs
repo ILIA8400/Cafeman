@@ -6,9 +6,9 @@ namespace CafeMan_Project.Controllers
 {
     public class RankingController : Controller
     {
-        private readonly IRepository<Cafe> cafe;
+        private readonly ICafeRepository<Cafe> cafe;
 
-        public RankingController(IRepository<Cafe> cafe)
+        public RankingController(ICafeRepository<Cafe> cafe)
         {
             this.cafe = cafe;
         }

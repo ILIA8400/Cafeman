@@ -6,9 +6,9 @@ namespace CafeMan_Project.Controllers
 {
     public class CafemanController : Controller
     {
-        private readonly IRepository<Cafe> cafeRepo;
+        private readonly ICafeRepository<Cafe> cafeRepo;
 
-        public CafemanController(IRepository<Cafe> cafeRepo)
+        public CafemanController(ICafeRepository<Cafe> cafeRepo)
         {
             this.cafeRepo = cafeRepo;
         }

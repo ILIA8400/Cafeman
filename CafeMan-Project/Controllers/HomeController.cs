@@ -5,6 +5,7 @@ using CafeMan_Project.Models.Entities;
 using CafeMan_Project.Models.ViewModels;
 using CafeMan_Project.Repositories;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -12,13 +13,13 @@ namespace CafeMan_Project.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly IRepository<Cafe> cafeRepo;
-        private readonly IUserRepository<User> userRepo;      
+        private readonly ICafeRepository<Cafe> cafeRepo;
+        private readonly UserManager<User> userManager;      
 
-        public HomeController(IRepository<Cafe> cafeRepo,IUserRepository<User> userRepo)
+        public HomeController(ICafeRepository<Cafe> cafeRepo,UserManager<User> userManager)
         {
             this.cafeRepo = cafeRepo;
-            this.userRepo = userRepo;
+            this.userManager = userManager;
         }
 
 
@@ -37,7 +38,7 @@ namespace CafeMan_Project.Controllers
             var userId = HttpContext.Request.Cookies["usi"];
 
             var cafes = await cafeRepo.GetAll();
-            var user = await userRepo.GetById(userId);
+            var user = await userManager.FindByIdAsync(userId);
             
             var model = new HomeAccountVM()
             {
@@ -55,38 +56,37 @@ namespace CafeMan_Project.Controllers
 
 
         [HttpGet]
-        public async Task<IActionResult> SearchResult([FromForm]SearchVm searchVm)
+        public async Task<IActionResult> SearchResult([Bind("User", "SearchName")] HomeAccountVM model)
         {
-            var cafes = await cafeRepo.GetAll();
-            var result = cafes.Where(c => c.CafeName.Contains(searchVm.SearchName)).ToList();
-            var email = searchVm.User.Email;
+            var cafes = await cafeRepo.GetOwnerCafe();
+            var result = cafes.Where(c => c.CafeName.Contains(model.SearchName)).ToList();
 
 
             if (result.Any())
             {
-                var model = new SearchVm()
+                var vm = new HomeAccountVM()
                 {
                     Cofes = cafes,
-                    User = searchVm.User,
-                    SearchName = searchVm.SearchName,
+                    User = model.User,
+                    SearchName = model.SearchName,
                     
                     ResultSearch = result
                 };
 
-                return View(model);
+                return View(vm);
             }
             else
             {
-                var model = new SearchVm()
+                var vm = new HomeAccountVM()
                 {
                     Cofes = cafes,
-                    User = searchVm.User,
-                    SearchName = searchVm.SearchName,
+                    User = model.User,
+                    SearchName = model.SearchName,
                     
                     ResultSearch = "کافه ای با این نام وجود ندارد"
                 };
 
-                return View(model);
+                return View(vm);
             }
         }
     }

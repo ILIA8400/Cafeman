@@ -12,23 +12,27 @@
 
 @model HomeAccountVM;
 
+@{
+    // var user = @Model.User;
+}
+
 
 <header>
     <p>CafeMan</p>
     <nav>
         <div>
-            <a class="navi" href="ranking.html">رنکینگ</a>
-            <a class="navi" href="">کافه من</a>
-            <a class="navi" href="favourite.html">علاقه مندی ها</a>
+            <a class="navi" asp-controller="Ranking" asp-action="Ranking">رنکینگ</a>
+            <a class="navi" asp-controller="Cafeman" asp-action="Cafeman">کافه من</a>
+            <a class="navi" asp-controller="Favourite" asp-action="Favourite">علاقه مندی ها</a>
         </div>
 
 
-        <form asp-controller="Home" asp-action="SearchResult" method="get" class="search-nav">
-                <input type="hidden" asp-for="User" value="@Model.User" />
+        @* <form asp-controller="Home" asp-action="SearchResult" method="get" class="search-nav">    
+                <input type="hidden" asp-for="User" name="User" value="user" />
                 <button type="submit" id="search-icon"><img width="15" height="15" src="https://img.icons8.com/ios-filled/15/search--v1.png" alt="search--v1" /></button>
                 <input asp-for="SearchName" type="text" placeholder="کافه مورد نظرتو پیدا کن">
                 <button type="reset" id="cacele-icon"><div></div><div></div></button>
-        </form>
+        </form> *@
         
 
 
@@ -72,7 +76,7 @@
             <p>بهترین و سریع ترین انتخاب</p>
             <p>در سایت ما میتوانید رنکینگ کافه های تهران و با فیلتر گذاری دلخواه مشاهده کنید یا جا رزرو کنید </p>
             <div class="hero-input">
-                <a href="">رنکینگ</a>
+                <a asp-controller="Ranking" asp-action="Ranking">رنکینگ</a>
                 <input type="search" placeholder="سرچ کن و کافه خودتو  پیدا کن">
             </div>
         </div>
@@ -181,8 +185,8 @@
             <div class="email"><a href="">ثبت</a><input type="email" name="" id="" placeholder="ایمیل شما"></div>
         </div>
         <div class="symbols">
-            <a href=""><img src="Images/namad1.webp" alt=""></a>
-            <a href=""><img src="Images/namad2.png" alt=""></a>
+            <a href=""><img src="~/Assets/Images/namad1.webp" alt=""></a>
+            <a href=""><img src="~/Assets/Images/namad2.png" alt=""></a>
         </div>
     </div>
 </footer>

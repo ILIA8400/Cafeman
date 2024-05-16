@@ -1,0 +1,40 @@
+﻿
+@using CafeMan_Project.Models.ViewModels
+@model RoleEditVM
+@section style {
+    <link href="~/lib/bootstrap/css/bootstrap.css" rel="stylesheet" />
+}
+
+<h2 style="margin-top:50px">Edit Role</h2>
+<hr />
+
+<table class="table table-striped table-bordered">
+    <tr>
+        <td style="text-align:center">Email</td>
+        <td style="text-align:center">Roles</td>
+    </tr>
+    <tr>
+        <td style="text-align:center">@Model.CurentUser.Email</td>
+        <td style="text-align:center">
+            
+            <form asp-action="EditRole" method="post">
+                    
+                <input type="hidden" value="@Model.CurentUser.Id" name="Id" />
+                @foreach(var role in Model.AllRoles)
+                {
+                    <input type="checkbox" name="Roles" checked="@Model.UserRoles.Contains(role.Name)" value="@role.Name">
+                    <label>@role.Name</label>
+                }
+                <div class="py-2">
+                    <button type="submit" class="btn btn-primary">Update Roles</button>
+                    <a asp-action="Info" class="btn btn-secondary">Return</a>
+                </div>
+            </form>
+
+        </td>
+    </tr>
+</table>
+
+
+
+

@@ -6,7 +6,9 @@ namespace CafeMan_Project.Models.ViewModels
     {
         public List<Cafe>? Cofes { get; set; }
         public User User { get; set; }
-        public SearchVm? searchVm { get; set; }
 
+        public List<Cafe>? UserCafes { get; set; }
+        public string? SearchName { get; set; }
+        public object? ResultSearch { get; set; }
     }
 }

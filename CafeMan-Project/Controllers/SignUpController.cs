@@ -53,6 +53,13 @@ namespace CafeMan_Project.Controllers
                 {
                     await userManager.AddToRoleAsync(user,"User");
 
+                    string userId = user.Id;
+
+                    HttpContext.Response.Cookies.Append("usi", userId, new CookieOptions()
+                    {
+                        Path = "/Home/HomeAccount",
+                    });
+
                     return RedirectToAction("HomeAccount", "Home");
                 }
                     
@@ -61,6 +68,7 @@ namespace CafeMan_Project.Controllers
                     ModelState.AddModelError("", item.Description);
                 }
                 
+               
             }
 
             return View(model);

@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace CafeMan_Project.Repositories
 {
-    public class CafeRepo : IRepository<Cafe>
+    public class CafeRepo : ICafeRepository<Cafe>
     {
         private readonly CafemanDbContext ctx;
 
@@ -13,7 +13,7 @@ namespace CafeMan_Project.Repositories
             this.ctx = ctx;
         }
 
-        public async void Delete(int entityId)
+        public async Task Delete(int entityId)
         {
             var cafe = await ctx.Cafes.SingleOrDefaultAsync(c => c.CafeId == entityId);
 
@@ -31,12 +31,12 @@ namespace CafeMan_Project.Repositories
             return ctx.Cafes.SingleOrDefaultAsync(c => c.CafeId == Id);
         }
 
-        public async void Insert(Cafe entity)
+        public async Task Insert(Cafe entity)
         {
             await ctx.AddAsync(entity);
         }
 
-        public async void Save()
+        public async Task Save()
         {
             await ctx.SaveChangesAsync();
         }
@@ -45,6 +45,32 @@ namespace CafeMan_Project.Repositories
         {
             ctx.Update(entity);
         }
+
+        public async Task<List<Cafe>> GetOwnerCafe()
+        {
+            var cafes = await ctx.Cafes.Include(c => c.Users).ToListAsync();
+            
+            return cafes;
+        }
+
+
+        public async Task<List<Cafe>> GetAllOrdderByRank()
+        {
+            var cafes = ctx.Cafes
+               .Select(c => new
+               {
+                   Cafe = c,
+                   AverageStar = ctx.Comments
+                                   .Where(comment => comment.CafeId == c.CafeId)
+                                   .Average(comment => (double?)comment.Star) ?? 0
+               })
+               .OrderByDescending(c => c.AverageStar)
+               .Select(c => c.Cafe)
+               .ToList();
+
+            return cafes;
+        }
+
 
         //رنکینگ کافه ها
         public ICollection<Cafe> GetCafeRanking()

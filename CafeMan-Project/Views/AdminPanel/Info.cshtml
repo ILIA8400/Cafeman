@@ -1,0 +1,149 @@
+﻿@using CafeMan_Project.Models.ViewModels
+@model AdminVM
+
+@section style {
+    <link href="~/lib/bootstrap/css/bootstrap.css" rel="stylesheet" />
+}
+
+@{
+    int userNumber = 0;
+    int cafeNumber = 0;
+    int adminNumber = 0;
+}
+
+
+<h2 style="margin-top:50px">Admins</h2>
+<hr />
+
+<table class="table table-striped table-bordered">
+    <tr>
+        <td style="text-align:center">#</td>
+        <td style="text-align:center">Email</td>
+        <td style="text-align:center">Is Deleted</td>
+        <td style="text-align:center">User management</td>
+    </tr>
+    @foreach(var admin in Model.Admins)
+    {
+        adminNumber++;
+
+        <tr>
+
+            <td style="text-align:center">@adminNumber</td>
+            <td style="text-align:center">@admin.Email</td>
+            @if (admin.IsDeleted)
+            {
+                <td style="text-align:center; color:red">@admin.IsDeleted</td>
+            }
+            else
+            {
+                <td style="text-align:center">@admin.IsDeleted</td>
+            }
+
+            <td style="display:flex; justify-content:space-around">
+                <a asp-action="EditUser" asp-route-id="@admin.Id" class="btn btn-info">Edit</a>
+                <a asp-action="EditRole" asp-route-id="@admin.Id" class="btn btn-warning">ManamgeRole</a>
+
+                <form asp-action="RemoveUser" method="post">
+                    <input type="hidden" name="id" value="@admin.Id">
+                    <button type="submit" class="btn btn-danger">Remove</button>
+                </form>
+            </td>
+
+        </tr>
+    }
+</table>
+
+ <br />
+
+<h2 style="margin-top:50px">Users List</h2>
+<hr />
+<table class="table table-striped table-bordered">
+    <tr>
+        <td style="text-align:center">#</td>
+        <td style="text-align:center">Email</td>
+        <td style="text-align:center">Is Cafe Owner</td>
+        <td style="text-align:center">Is Deleted</td>
+        <td style="text-align:center">User management</td>
+    </tr>
+    @foreach (var user in Model.Users)
+    {
+
+        userNumber++;
+        <tr>
+            <td style="text-align:center">@userNumber</td>
+            <td style="text-align:center">@user.Email</td>
+            @if (user.IsCafeOwner)
+            {
+                <td style="text-align:center; color:peru">@user.IsCafeOwner</td>
+            }
+            else
+            {
+                <td style="text-align:center">@user.IsCafeOwner</td>
+            }
+            @if (user.IsDeleted)
+            {
+                <td style="text-align:center; color:red">@user.IsDeleted</td>
+            }
+            else
+            {
+                <td style="text-align:center">@user.IsDeleted</td>
+            }
+            <td style="display:flex; justify-content:space-around">
+                <a asp-action="EditUser" asp-route-id="@user.Id" class="btn btn-info">Edit</a>
+                <a asp-action="EditRole" asp-route-id="@user.Id" class="btn btn-warning">ManamgeRole</a>
+
+                <form asp-action="RemoveUser" method="post">
+                    <input type="hidden" name="id" value="@user.Id">
+                    <button type="submit" class="btn btn-danger">Remove</button>
+                </form>
+            </td>
+        </tr>
+    }
+</table>
+
+<br />
+
+<h2 style="margin-top:50px;">Cafes List</h2>
+<hr />
+<table style="margin-bottom:75px;" class="table table-striped table-bordered">
+    <tr>
+        <td style="text-align:center">#</td>
+        <td style="text-align:center">Cafe Name</td>
+        <td style="text-align:center">Owner</td>
+        <td style="text-align:center">Rank</td>
+        <td style="text-align:center">Address</td>
+        <td style="text-align:center">Is Deleted</td>
+        <td style="text-align:center">User management</td>
+    </tr>
+    @foreach (var cafe in Model.Cafes)
+    {
+
+
+        cafeNumber++;
+        <tr>
+            <td style="text-align:center">@cafeNumber</td>
+            <td style="text-align:center">@cafe.CafeName</td>
+            <td style="text-align:center">@cafe.Users.Email</td>
+            <td style="text-align:center">@cafe.Rank</td>
+            <td style="text-align:center">@cafe.Address</td>
+
+
+            @if (cafe.IsDeleted)
+            {
+                <td style="text-align:center; color:red">@cafe.IsDeleted</td>
+            }
+            else
+            {
+                <td style="text-align:center">@cafe.IsDeleted</td>
+            }
+            <td style="display:flex; justify-content:space-around">
+                <a asp-action="Edit" asp-route-id="@cafe.CafeId" class="btn btn-info">Edit</a>
+
+                <form asp-action="Remove" method="post">
+                    <input type="hidden" name="id" value="@cafe.CafeId">
+                    <button type="submit" class="btn btn-danger">Remove</button>
+                </form>
+            </td>
+        </tr>
+    }
+</table>
