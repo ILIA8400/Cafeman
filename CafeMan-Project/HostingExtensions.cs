@@ -29,6 +29,9 @@ namespace CafeMan_Project
             });
 
 
+            builder.Logging.AddFile();
+
+
             builder.Services.AddIdentity<User, IdentityRole>(c =>
             {
                 c.Password.RequiredLength = 8;
@@ -42,9 +45,9 @@ namespace CafeMan_Project
 
             builder.Services.AddAuthorization(c =>
             {
-                c.AddPolicy("Role", po =>
+                c.AddPolicy("Roles", po =>
                 {
-                    po.RequireRole("User","Cafe owner");
+                    po.RequireRole("User","Cafe owner","Admin");
                 });
 
             });

@@ -23,12 +23,12 @@
             <a class="navi" href="favourite.html">علاقه مندی ها</a>
         </div>
 
-        <form class="search-nav">
+        <form asp-controller="Home" asp-action="SearchResult" method="get" class="search-nav">
 
-            
-                <button id="search-icon"><img width="15" height="15" src="https://img.icons8.com/ios-filled/15/search--v1.png" alt="search--v1" /></button>
-                <input type="text" placeholder="کافه مورد نظرتو پیدا کن">
-                <button id="cacele-icon"><div></div><div></div></button>
+            <input type="hidden" asp-for="User" name="User" value="user" />
+            <button type="submit" id="search-icon"><img width="15" height="15" src="https://img.icons8.com/ios-filled/15/search--v1.png" alt="search--v1" /></button>
+            <input asp-for="SearchName" type="text" placeholder="کافه مورد نظرتو پیدا کن">
+            <button type="reset" id="cacele-icon"><div></div><div></div></button>
                 <div class="search-sugg">
 
                     @if(Model.ResultSearch is List<Cafe>)
@@ -40,7 +40,7 @@
                     }
                     else
                     {
-                        <h3>@Model.ResultSearch</h3>
+                        <p style="font-size:small">@Model.ResultSearch</p>
                     }
                 
                 </div>

@@ -14,27 +14,33 @@ namespace CafeMan_Project.Controllers
     public class HomeController : Controller
     {
         private readonly ICafeRepository<Cafe> cafeRepo;
-        private readonly UserManager<User> userManager;      
+        private readonly UserManager<User> userManager;
+        private readonly ILogger<HomeController> logger;
 
-        public HomeController(ICafeRepository<Cafe> cafeRepo,UserManager<User> userManager)
+        public HomeController(ICafeRepository<Cafe> cafeRepo,UserManager<User> userManager,ILogger<HomeController> logger)
         {
             this.cafeRepo = cafeRepo;
             this.userManager = userManager;
+            this.logger = logger;
         }
 
 
 
         public async Task<IActionResult> Index()
         {
+            logger.Log(LogLevel.Information,eventId:200, "*************** Application is started ***************");
+            ViewBag.Title = "Cafeman";
+
             var cafes = await cafeRepo.GetAll();
             return View(cafes);
         }
 
 
 
-        //[Authorize(Roles ="User")]
+        [Authorize(Policy = "Roles")]
         public async Task<IActionResult> HomeAccount()
         {
+            ViewBag.Title = "Cafeman";
             var userId = HttpContext.Request.Cookies["usi"];
 
             var cafes = await cafeRepo.GetAll();
@@ -46,6 +52,7 @@ namespace CafeMan_Project.Controllers
                 User = user
             };
 
+            TempData["userId"] = userId;
             HttpContext.Response.Cookies.Delete("usi");
 
             if(user == null)
@@ -56,18 +63,36 @@ namespace CafeMan_Project.Controllers
 
 
         [HttpGet]
-        public async Task<IActionResult> SearchResult([Bind("User", "SearchName")] HomeAccountVM model)
+        public async Task<IActionResult> SearchResult([Bind("SearchName")] HomeAccountVM model)
         {
+            ViewBag.Title = "صحفه اصلی";
+
             var cafes = await cafeRepo.GetOwnerCafe();
-            var result = cafes.Where(c => c.CafeName.Contains(model.SearchName)).ToList();
 
+            List<Cafe>? result;
+            if(model.SearchName != null)
+            {
+                result = cafes.Where(c => c.CafeName.Contains(model.SearchName)).ToList();
+                if (!result.Any())
+                    result = null;            
+            }
+            else
+            {
+               result = null;
+            }
+                
 
-            if (result.Any())
+            
+            var userId = TempData.Peek("userId").ToString();
+            
+            var user = await userManager.FindByIdAsync(userId);
+
+            if (result != null)
             {
                 var vm = new HomeAccountVM()
                 {
                     Cofes = cafes,
-                    User = model.User,
+                    User = user,
                     SearchName = model.SearchName,
                     
                     ResultSearch = result
@@ -80,7 +105,7 @@ namespace CafeMan_Project.Controllers
                 var vm = new HomeAccountVM()
                 {
                     Cofes = cafes,
-                    User = model.User,
+                    User = user,
                     SearchName = model.SearchName,
                     
                     ResultSearch = "کافه ای با این نام وجود ندارد"

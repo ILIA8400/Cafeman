@@ -20,6 +20,7 @@ namespace CafeMan_Project.Controllers
         [Route("SignUp")]
         public IActionResult SignUp()
         {
+            ViewBag.Title = "ثبت نام";
             return View();
         }
 

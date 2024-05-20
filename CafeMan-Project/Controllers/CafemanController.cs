@@ -1,4 +1,5 @@
 ﻿using CafeMan_Project.Models.Entities;
+using CafeMan_Project.Models.ViewModels;
 using CafeMan_Project.Repositories;
 using Microsoft.AspNetCore.Mvc;
 
@@ -14,24 +15,43 @@ namespace CafeMan_Project.Controllers
         }
 
 
-        [Route("Cafeman/AddCafe")]
-        public IActionResult Cafeman()
+        
+        public IActionResult Cafeman(string id)
         {
-            return View();
+            ViewBag.Title = "کافه من";
+            var model = new CafemanVM()
+            {
+                ID =id
+            };
+            return View(model);
         }
 
 
         [HttpPost]
-        [Route("Cafeman/AddCafe")]
-        public IActionResult Cafeman(Cafe cafe)
+        public async Task<IActionResult> Cafeman(CafemanVM model)
         {
             if (ModelState.IsValid)
-            {            
-                cafeRepo.Insert(cafe);
-                return RedirectToAction("Home","HomeAccount");
+            {
+                var cafe = new Cafe()
+                {
+                    CafeName = model.CafeName,
+                    CafeDescription = model.CafeDescription,
+                    Tel = model.Tel,
+                    Address = model.Address,
+                    Website = model.Website,
+                    Location = model.Location,
+                    PriceRange = model.PriceRange,
+                    Details = model.Details,
+                };
+
+                await cafeRepo.Insert(cafe);
+
+                HttpContext.Response.Cookies.Append("usi", model.ID);
+
+                return RedirectToAction("HomeAccount", "Home");
             }
 
-            return View(cafe);
+            return View(model);
         }
     }
 }

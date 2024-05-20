@@ -16,6 +16,7 @@ namespace CafeMan_Project.Controllers
         [Route("Ranking/List")]
         public async Task<IActionResult> Ranking()
         {
+            ViewBag.Title = "رنکینگ";
             var cafes = await cafe.GetAll();//.OrderByDescending(c=>c.Star);
             
             return View(cafes);

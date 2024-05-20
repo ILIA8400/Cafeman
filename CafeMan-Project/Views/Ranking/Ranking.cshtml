@@ -8,9 +8,6 @@
     <script src="~/Assets/js/filter.js"></script>
 }
 
-@using CafeMan_Project.Models.Entities
-
-@model List<Cafe>
 
 
 <header>
@@ -64,7 +61,7 @@
                
                 <div class="card">
                     <div class="dif">
-                        <a class="title">
+                        <a asp-controller="Profile" asp-action="Profile" asp-route-q="@item.CafeId" class="title">
                             <p dir="rtl">@rank- @item.CafeName</p>
                         </a>
                         <div class="rate">

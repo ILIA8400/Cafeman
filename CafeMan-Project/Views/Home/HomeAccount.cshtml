@@ -1,4 +1,4 @@
-﻿@using CafeMan_Project.Models.ViewModels;
+﻿
 
 @section style{
     <link href="~/Assets/css/home.css" rel="stylesheet" />
@@ -12,27 +12,24 @@
 
 @model HomeAccountVM;
 
-@{
-    // var user = @Model.User;
-}
 
 
 <header>
     <p>CafeMan</p>
     <nav>
         <div>
-            <a class="navi" asp-controller="Ranking" asp-action="Ranking">رنکینگ</a>
+            <a class="navi" asp-route-id="@Model.User.Id" asp-controller="Ranking" asp-action="Ranking">رنکینگ</a>
             <a class="navi" asp-controller="Cafeman" asp-action="Cafeman">کافه من</a>
             <a class="navi" asp-controller="Favourite" asp-action="Favourite">علاقه مندی ها</a>
         </div>
 
 
-        @* <form asp-controller="Home" asp-action="SearchResult" method="get" class="search-nav">    
+        <form asp-controller="Home" asp-action="SearchResult" method="get" class="search-nav">    
                 <input type="hidden" asp-for="User" name="User" value="user" />
                 <button type="submit" id="search-icon"><img width="15" height="15" src="https://img.icons8.com/ios-filled/15/search--v1.png" alt="search--v1" /></button>
                 <input asp-for="SearchName" type="text" placeholder="کافه مورد نظرتو پیدا کن">
                 <button type="reset" id="cacele-icon"><div></div><div></div></button>
-        </form> *@
+        </form>
         
 
 

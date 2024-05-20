@@ -22,7 +22,7 @@ namespace CafeMan_Project.Controllers
         [Route("Profile")]
         public async Task<IActionResult> Profile(int q)
         {
-
+            
             var cafes = await cafe.GetById(q);
             var comments = await comment.GetAll();
             var edibles = await edible.GetAll();
@@ -34,8 +34,9 @@ namespace CafeMan_Project.Controllers
                 Edibles = edibles.Where(c=>c.CafeId == q).ToList()  //Problom =========> menu
             };
 
-            
-            if(profileViewModel.Cafe == null)
+            ViewBag.Title = cafes.CafeName;
+
+            if (profileViewModel.Cafe == null)
                 return BadRequest();
 
             return View(profileViewModel);

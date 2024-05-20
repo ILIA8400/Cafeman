@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace CafeMan_Project.Controllers
 {
-    //[Authorize(Roles = "User")]
+    [Authorize(Policy = "Roles")]
     public class FavouriteController : Controller
     {
         private readonly CafemanDbContext ctx;
@@ -21,6 +21,7 @@ namespace CafeMan_Project.Controllers
         [Route("Favourite/List")]
         public async Task<IActionResult> Favourite(string q)
         {
+            ViewBag.Title = "علاقه مندی ها";
             var user = await userManager.FindByIdAsync(q);
             
             return View(user);

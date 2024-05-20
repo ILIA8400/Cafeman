@@ -2,6 +2,7 @@
 using CafeMan_Project.Models.Entities;
 using CafeMan_Project.Models.ViewModels;
 using CafeMan_Project.Repositories;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -9,6 +10,8 @@ using System.Data;
 
 namespace CafeMan_Project.Controllers
 {
+
+    [Authorize(Roles = "Admin")]
     public class AdminPanelController : Controller
     {
         private readonly UserManager<User> userManager;
@@ -22,8 +25,11 @@ namespace CafeMan_Project.Controllers
             this.cafeRepo = cafeRepo;        
         }
 
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Info()
         {
+            ViewBag.Title = "پنل ادمین";
+
             var users = await userManager.Users.ToListAsync();
             var cafes = await cafeRepo.GetOwnerCafe();
             var admins = await userManager.GetUsersInRoleAsync("Admin");

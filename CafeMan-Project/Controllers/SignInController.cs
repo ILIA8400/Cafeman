@@ -24,6 +24,7 @@ namespace CafeMan_Project.Controllers
         [Route("SignIn")]
         public IActionResult SignIn()
         {
+            ViewBag.Title = "ورود";
             return View();
         }
 
