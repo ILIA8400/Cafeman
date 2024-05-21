@@ -19,10 +19,11 @@ namespace CafeMan_Project.Controllers
         }
 
         [Route("Favourite/List")]
-        public async Task<IActionResult> Favourite(string q)
+        public async Task<IActionResult> Favourite()
         {
             ViewBag.Title = "علاقه مندی ها";
-            var user = await userManager.FindByIdAsync(q);
+
+            var user = await userManager.FindByIdAsync(TempData.Peek("userId").ToString());
             
             return View(user);
         }

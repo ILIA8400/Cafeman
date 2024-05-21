@@ -18,12 +18,12 @@
             <a asp-controller="Cafeman" asp-action="Cafeman">کافه من</a>
             <a asp-controller="Favourite" asp-action="Favourite">علاقه مندی ها</a>
         </div>
-        <div class="search-nav">
+        <div style="display:none" class="search-nav">
             <img width="15" height="15" src="https://img.icons8.com/ios-filled/15/search--v1.png" alt="search--v1" />
             <input type="text" placeholder="کافه مورد نظرتو پیدا کن">
             <button href=""><div></div><div></div></button>
         </div>
-        <div>
+        <div style="display:none">
             <a href="signin.html">ورود</a>
             <a href="signup.html">ثبت نام</a>
         </div>
@@ -61,7 +61,7 @@
         }
         else
         {
-            <h1>شما هنوز کافه مورد علاقه ای ندارید</h1>
+            <p style="font-size:xx-large; color:brown">شما هنوز کافه مورد علاقه ای ندارید</p>
         }
 
  @*        <div class="cafe-card cafe1">
@@ -78,26 +78,6 @@
 
 </main>
 
-<footer>
-    <div class="name">
-        <p dir="rtl">CafeMan</p>
-        <div>
-            <div dir="rtl">تلفن : 02133858511</div>
-            <div>از ساعت 8 صبح تا 12 شب پاسخگوی شما هستیم</div>
-        </div>
-        <a href="" onclick="topFunction()" id="myBtn" title="Go to top">بازگشت به بالا</a>
-    </div>
-    <div class="row2">
-        <div class="conect-us">
-            <div class="social"><a href=""><img width="40" height="40" src="https://img.icons8.com/ios/50/instagram-new--v1.png" alt="instagram-new--v1" /></a><a href=""><img width="40" height="40" src="https://img.icons8.com/ios/40/telegram.png" alt="telegram" /></a><a href=""><img width="50" height="50" src="https://img.icons8.com/ios/50/linkedin.png" alt="linkedin" /></a></div>
-            <p>با ثبت ایمیل از جدید ترین کافه ها و رویداد های کافه ها با خبر شوید</p>
-            <div class="email"><a href="">ثبت</a><input type="email" name="" id="" placeholder="ایمیل شما"></div>
-        </div>
-        <div class="symbols">
-            <a href=""><img src="~/Assets/Images/namad1.webp" alt=""></a>
-            <a href=""><img src="~/Assets/Images/namad2.png" alt=""></a>
-        </div>
-    </div>
-</footer>
+
 
 

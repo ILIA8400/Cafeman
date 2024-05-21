@@ -27,8 +27,8 @@
 
             <input type="hidden" asp-for="User" name="User" value="user" />
             <button type="submit" id="search-icon"><img width="15" height="15" src="https://img.icons8.com/ios-filled/15/search--v1.png" alt="search--v1" /></button>
-            <input asp-for="SearchName" type="text" placeholder="کافه مورد نظرتو پیدا کن">
-            <button type="reset" id="cacele-icon"><div></div><div></div></button>
+            <input id="searchIn" asp-for="SearchName" type="text" placeholder="کافه مورد نظرتو پیدا کن">
+            <button type="button" id="cacele-icon"><div></div><div></div></button>
                 <div class="search-sugg">
 
                     @if(Model.ResultSearch is List<Cafe>)
@@ -63,7 +63,7 @@
                 }
 
                 <div style="display:flex;gap:5px;">
-                    <a id="edit" href="">ویرایش</a>
+                    <a id="edit" href="#">ویرایش</a>
                     <a asp-controller="SignOut" asp-action="SignOutUser" id="signout">خارج شدن</a>
                 </div>
             </div>
