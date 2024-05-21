@@ -20,7 +20,10 @@ namespace CafeMan_Project
             //    opt.Preload = true;
             //});
 
-            var connection = builder.Configuration.GetConnectionString("cnn");
+            builder.Configuration.AddUserSecrets("f99bedd6-294d-4d7c-9cdc-160674c037ff");
+
+            //var connection = builder.Configuration.GetConnectionString("cnn");
+            var connection = builder.Configuration["ConnectionStrings:cnn"];
             builder.Services.AddDbContext<CafemanDbContext>(p => p.UseSqlServer(connection));
             builder.Services.AddControllersWithViews().AddMvcOptions(opt =>
             {
@@ -28,6 +31,7 @@ namespace CafeMan_Project
                 
             });
 
+            builder.Configuration.SetBasePath(builder.Environment.ContentRootPath).AddJsonFile("appsettings.ilia.json");
 
             builder.Logging.AddFile();
 
