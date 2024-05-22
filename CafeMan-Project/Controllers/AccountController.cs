@@ -8,5 +8,10 @@ namespace CafeMan_Project.Controllers
         {
             return RedirectToAction("SignIn", "SignIn");
         }
+
+        public IActionResult Login()
+        {
+            return RedirectToAction("SignIn", "SignIn");
+        }
     }
 }

@@ -37,7 +37,7 @@ namespace CafeMan_Project.Controllers
 
 
 
-        [Authorize(Policy = "Roles")]
+        [Authorize("Roles")]
         public async Task<IActionResult> HomeAccount()
         {
             ViewBag.Title = "Cafeman";
@@ -56,12 +56,12 @@ namespace CafeMan_Project.Controllers
             HttpContext.Response.Cookies.Delete("usi");
 
             if(user == null)
-                return BadRequest(ModelState);
+                return NotFound();
             else
                 return View(model);
         }
 
-
+        [Authorize("Roles")]
         [HttpGet]
         public async Task<IActionResult> SearchResult([Bind("SearchName")] HomeAccountVM model)
         {
@@ -80,10 +80,17 @@ namespace CafeMan_Project.Controllers
             {
                result = null;
             }
-                
 
-            
-            var userId = TempData.Peek("userId").ToString();
+            string userId;
+            if (TempData.Peek("userId") != null)
+            {
+                userId = TempData.Peek("userId").ToString();
+            }
+            else
+            {
+                return NotFound();
+            }
+                
             
             var user = await userManager.FindByIdAsync(userId);
 

@@ -20,21 +20,6 @@ namespace CafeMan_Project
             //    opt.Preload = true;
             //});
 
-            builder.Configuration.AddUserSecrets("f99bedd6-294d-4d7c-9cdc-160674c037ff");
-
-            //var connection = builder.Configuration.GetConnectionString("cnn");
-            var connection = builder.Configuration["ConnectionStrings:cnn"];
-            builder.Services.AddDbContext<CafemanDbContext>(p => p.UseSqlServer(connection));
-            builder.Services.AddControllersWithViews().AddMvcOptions(opt =>
-            {
-                opt.Filters.Add<MyHttpsAttribute>();
-                
-            });
-
-            builder.Configuration.SetBasePath(builder.Environment.ContentRootPath).AddJsonFile("appsettings.ilia.json");
-
-            builder.Logging.AddFile();
-
 
             builder.Services.AddIdentity<User, IdentityRole>(c =>
             {
@@ -51,10 +36,30 @@ namespace CafeMan_Project
             {
                 c.AddPolicy("Roles", po =>
                 {
-                    po.RequireRole("User","Cafe owner","Admin");
+                    po.RequireRole("User", "Cafe owner", "Admin");
                 });
 
             });
+
+
+
+            builder.Configuration.AddUserSecrets("f99bedd6-294d-4d7c-9cdc-160674c037ff");
+
+            //var connection = builder.Configuration.GetConnectionString("cnn");
+            var connection = builder.Configuration["ConnectionStrings:cnn"];
+            builder.Services.AddDbContext<CafemanDbContext>(p => p.UseSqlServer(connection));
+            builder.Services.AddControllersWithViews().AddMvcOptions(opt =>
+            {
+                opt.Filters.Add<MyHttpsAttribute>();
+                
+            });
+
+            builder.Configuration.SetBasePath(builder.Environment.ContentRootPath).AddJsonFile("appsettings.ilia.json");
+
+            builder.Logging.AddFile();
+
+
+            
 
 
             builder.Services.AddScoped<IUserRepository<User>,UserRepo>();

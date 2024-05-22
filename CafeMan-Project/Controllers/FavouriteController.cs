@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace CafeMan_Project.Controllers
 {
-    [Authorize(Policy = "Roles")]
+    [Authorize("Roles")]
     public class FavouriteController : Controller
     {
         private readonly CafemanDbContext ctx;
@@ -23,8 +23,13 @@ namespace CafeMan_Project.Controllers
         {
             ViewBag.Title = "علاقه مندی ها";
 
-            var user = await userManager.FindByIdAsync(TempData.Peek("userId").ToString());
-            
+            User user;
+            if(TempData.Peek("userId") != null)
+                user = await userManager.FindByIdAsync(TempData.Peek("userId").ToString());
+            else
+                return RedirectToAction("SignIn", "SignIn");
+
+
             return View(user);
         }
     }
