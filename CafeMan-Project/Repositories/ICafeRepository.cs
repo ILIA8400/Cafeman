@@ -7,7 +7,7 @@ namespace CafeMan_Project.Repositories
         Task<List<Cafe>> GetAll();
         Task<Cafe?> GetById(int id);
         Task Insert(Cafe entity);
-        void Update(Cafe entity);
+        Task Update(Cafe entity);
         Task Delete(int entityId);
         Task Save();
 

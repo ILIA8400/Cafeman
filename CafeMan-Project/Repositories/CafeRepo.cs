@@ -19,6 +19,8 @@ namespace CafeMan_Project.Repositories
 
             if (cafe != null)
                 ctx.Remove(cafe);
+
+            await Save();
         }
 
         public async Task<List<Cafe>> GetAll()
@@ -34,6 +36,7 @@ namespace CafeMan_Project.Repositories
         public async Task Insert(Cafe entity)
         {
             await ctx.AddAsync(entity);
+            await Save();
         }
 
         public async Task Save()
@@ -41,9 +44,10 @@ namespace CafeMan_Project.Repositories
             await ctx.SaveChangesAsync();
         }
 
-        public void Update(Cafe entity)
+        public async Task Update(Cafe entity)
         {
             ctx.Update(entity);
+            await Save();
         }
 
         public async Task<List<Cafe>> GetOwnerCafe()
